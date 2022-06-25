@@ -6,6 +6,7 @@ import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import Bot from "../Bot";
 import { useStore } from "../../store";
 import { toggleShowBot } from "../../reducer/BotStepperReducer";
+import FloatingForm from "./FloatingForm";
 
 const LandingMaster = () => {
   const [, dispatch] = useStore(); 
@@ -34,6 +35,7 @@ const LandingMaster = () => {
       <Grid item xs={4}>
         <img src={RedCar} alt="red car" />
       </Grid>
+      <FloatingForm />
       <Bot />
       <Fab
         color="primary"
