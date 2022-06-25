@@ -29,8 +29,8 @@ const VoiceWindow = ({type})=>{
             <Grid item xs={12}>
               <Avatar sx={{
                 backgroundColor:"primary.dark",
-                width:"125px",
-                height:"125px",
+                width:"100px",
+                height:"100px",
                 margin:"12.5px auto"
               }}>
                 <SupportAgentIcon/>
@@ -40,12 +40,13 @@ const VoiceWindow = ({type})=>{
             <Grid item xs={12}>
               <Button size='small' status='danger'> Disconnect Call </Button>
             </Grid>
-            <Grid item container xs={12} height="60px" borderTop="1px solid gray">
-              <Grid item xs={12}>
-              <Typography variant='body1'>{transcript}</Typography>
+            <Grid item container xs={12} height="100px" borderTop="1px solid gray">
+              <Grid item xs={12} textAlign="center">
+              <Typography variant='body1' textAlign="left" height="30px">{transcript}</Typography>
               <Fab
                 color="primary"
                 aria-label="add"
+                margin="auto"
               >
                 <KeyboardVoiceIcon />
               </Fab>

@@ -3,10 +3,11 @@ import axios from "axios";
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import { useStore } from "../store";
 import { VOICE_WINDOW } from "../constants";
+import { toggleShowBot } from "../reducer/BotStepperReducer";
 
 const useVoice = ()=>{
     const [currentSpeaker, setCurrentSpeaker] = useState("bot");
-    const [state,] = useStore();
+    const [state,dispatch] = useStore();
     const [messages, setMessages] = useState([]);
     
     const {
@@ -20,10 +21,14 @@ const useVoice = ()=>{
           messageByBot("Hello! I am here to answer any query you have about insurances. Ask away!")
     }, [state.botStepper])
 
+
     useEffect(()=>{
         console.log(listening,transcript);
         if(listening===false && transcript!=="")
-            sendQuery(transcript);
+            if(transcript.toLowerCase()==="no")
+                dispatch(toggleShowBot());
+            else
+                sendQuery(transcript);
       },[listening])
 
     const speakerAPI = new SpeechSynthesisUtterance();
@@ -64,8 +69,9 @@ const useVoice = ()=>{
         .then(response=>{
             resetTranscript();
             console.log(response);
-            if(response.data.success)
+            if(response.data.success){
                 messageByBot(response.data.data);
+                messageByBot("Is there anything else I can help you with?");}
             else
                 messageByBot("Please repeat your question.")
         })
