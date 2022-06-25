@@ -1,0 +1,9 @@
+.GrayButton {
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
+  background-color: lightgray;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}

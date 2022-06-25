@@ -1,5 +1,6 @@
 import { Grid } from "@mui/material";
 import React from "react";
+import LandingMaster from "../Components/LandingMaster";
 import PrimaryNav from "../Components/PrimaryNav";
 import SecondaryNav from "../Components/SecondaryNav";
 const LandingPage = () => {
@@ -7,6 +8,7 @@ const LandingPage = () => {
     <Grid container>
       <SecondaryNav/>
       <PrimaryNav/>
+      <LandingMaster/>
     </Grid>
   );
 };
