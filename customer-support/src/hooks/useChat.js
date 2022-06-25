@@ -6,7 +6,7 @@ const useChat = ()=>{
         from:"bot",
         message:"Hey, how can I help you today?"
     }]);
-
+    
     const sendQuery = (message)=>{
         setMessages(messages=>{
             return(

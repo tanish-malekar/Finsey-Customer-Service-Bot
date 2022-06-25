@@ -11,6 +11,9 @@ const ChatWindow = () => {
   const [state] = useStore();
   const {messages, sendQuery} = useChat();
 
+  claimMessages = ["Thank you, now please provide the address of the accident.", "Okay, can you please tell us the Kilometer reading of your car?", "Please provide us with a video of your damaged car. The video should be a 360 view of the car. Make sure you focus on all the damages."];
+
+  
   return (
     <Fade in={state.botStepper === CHAT_WINDOW} unmountOnExit>
       <Grid container>
