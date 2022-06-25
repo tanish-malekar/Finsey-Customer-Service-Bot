@@ -13,7 +13,8 @@ import os
 
 es = Elasticsearch(
     cloud_id="HackRX:dXMtY2VudHJhbDEuZ2NwLmNsb3VkLmVzLmlvJDA5OTMzNjQ5ODJkMDQyOThhY2IwZmY5ZmNjYTMwMGRmJGRiYWViNjhhOTlkNDRlY2FhOTU1NzE1ZTUxNGU3ZDM0",
-    http_auth=("elastic", "IT46F8n20fj9lITRuK6EqRNE")
+    http_auth=("elastic", "IT46F8n20fj9lITRuK6EqRNE"),
+    verify_certs=False
 )
 # # use the elasticsearc
 # # h client's helpers class for _bulk API
