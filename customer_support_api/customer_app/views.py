@@ -23,14 +23,14 @@ def dummy(req):
 
 @api_view(['POST'])
 def Test(request):
-    # try:
-    data = request.data['message']
-    return JsonResponse({
-        "success":True,
-        "data":dummy(data)
-    })
-    # except:
-    #     return JsonResponse({
-    #         "success":False,
-    #         "error":"invalid data"
-    #     })
+    try:
+        data = request.data['message']
+        return JsonResponse({
+            "success":True,
+            "data":dummy(data)
+        })
+    except:
+        return JsonResponse({
+            "success":False,
+            "error":"invalid data"
+        })
