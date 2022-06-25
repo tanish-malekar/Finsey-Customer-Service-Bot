@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import SendIcon from "@mui/icons-material/Send";
 import { Grid, TextField } from "@mui/material";
 
 const ChatTextField = ({sendQuery}) => {
+  const [value,setValue] = useState("");
   return (
     <Grid
       item
@@ -18,6 +19,8 @@ const ChatTextField = ({sendQuery}) => {
       }}
     >
       <TextField
+        value={value}
+        onChange={(e)=>{setValue(e.target.value)}}
         fullWidth
         variant="standard"
         sx={{
@@ -37,6 +40,7 @@ const ChatTextField = ({sendQuery}) => {
           bottom: "50%",
           transform: "translateY(50%)",
         }}
+        onClick={()=>{sendQuery(value)}}
       />
     </Grid>
   );
