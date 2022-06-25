@@ -7,11 +7,19 @@ import csv
 import json
 import sys
 import os
+import configparser
+
+config = configparser.ConfigParser()
+# config.read(r'C:\Users\HP\Desktop\PS9_Horizon\ElasticSearch\example.ini')
 
 
-es = Elasticsearch("https://localhost:9200", http_auth=("elastic",
-                   "DI0f3ZZ9hDLB+yr3l4ZM"),  verify_certs=False)
-# use the elasticsearch client's helpers class for _bulk API
+
+es = Elasticsearch(
+    cloud_id="HackRX:dXMtY2VudHJhbDEuZ2NwLmNsb3VkLmVzLmlvJDA5OTMzNjQ5ODJkMDQyOThhY2IwZmY5ZmNjYTMwMGRmJGRiYWViNjhhOTlkNDRlY2FhOTU1NzE1ZTUxNGU3ZDM0",
+    http_auth=("elastic", "IT46F8n20fj9lITRuK6EqRNE")
+)
+# use the elasticsearc
+# h client's helpers class for _bulk API
 #es = Elasticsearch("h
 # 2ttps://localhost:9200")
 # print(es.ping())
