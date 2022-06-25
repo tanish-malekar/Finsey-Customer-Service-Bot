@@ -3,6 +3,7 @@ import BotContainer from "./BotContainer";
 import ChatWindow from "./ChatWindow";
 import GetDetails from "./GetDetails";
 import GetStarted from "./GetStarted";
+import SelectMode from "./SelectMode";
 import VoiceWindow from "./VoiceWindow";
 
 
@@ -11,8 +12,9 @@ const Bot = () => {
     <BotContainer>
         <GetStarted />
         <GetDetails />
-        {/* <ChatWindow /> */}
+        <ChatWindow />
         <VoiceWindow type='general-query'/>
+        <SelectMode/>
     </BotContainer>
   );
 };

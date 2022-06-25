@@ -5,45 +5,12 @@ import { CHAT_WINDOW } from "../../../constants";
 import ChatHeader from "./ChatHeader";
 import ChatTextField from "./ChatTextField";
 import Message from "../Message";
-
-let dummyChat = [
-  {
-    from: "bot",
-    message: "hey, how can I help you today?",
-  },
-  {
-    from: "user",
-    message: "please help me claim my policy",
-  },
-  {
-    from: "bot",
-    message: "hey, how can I help you today?",
-  },
-  {
-    from: "user",
-    message: "please help me claim my policy",
-  },
-  {
-    from: "bot",
-    message: "hey, how can I help you today?",
-  },
-  {
-    from: "user",
-    message: "please help me claim my policy",
-  },
-  {
-    from: "bot",
-    message: "hey, how can I help you today?",
-  },
-  {
-    from: "user",
-    message:
-      "please help me claim my policy. please help me claim my policy. please help me claim my policy. please help me claim my policy",
-  },
-];
+import useChat from "../../../hooks/useChat";
 
 const ChatWindow = () => {
   const [state] = useStore();
+  const {messages, sendQuery} = useChat();
+
   return (
     <Fade in={state.botStepper === CHAT_WINDOW} unmountOnExit>
       <Grid container>
@@ -58,11 +25,11 @@ const ChatWindow = () => {
           alignItems="self-start"
           display="block"
         >
-          {dummyChat.map((chat, index) => (
+          {messages.map((chat, index) => (
             <Message {...chat} key={index} />
           ))}
         </Grid>
-            <ChatTextField />
+            <ChatTextField sendQuery={sendQuery}/>
       </Grid>
     </Fade>
   );

@@ -5,14 +5,14 @@ import Dash from "../../images/dash.svg";
 import { Fade, Grid, Typography } from "@mui/material";
 import Style from "./BotStyle.module.css";
 import Button from "../Button";
-import { GET_DETAILS, GET_STARTED } from "../../constants";
+import { SELECT_MODE, GET_STARTED } from "../../constants";
 import { useStore } from "../../store";
 import { setBotStepper, toggleShowBot } from "../../reducer/BotStepperReducer";
 const GetStarted = () => {
   const [state, dispatch] = useStore();
 
   const onGetStarted = () => {
-    dispatch(setBotStepper(GET_DETAILS));
+    dispatch(setBotStepper(SELECT_MODE));
   };
 
   return (
