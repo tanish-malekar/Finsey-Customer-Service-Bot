@@ -9,7 +9,7 @@ export const BotPaper = styled(Paper, {
 })(({ theme, fullWidth }) => ({
   borderRadius: "20px",
   width: fullWidth?"600px":"300px",
-  maxHeight: "400px",
+  maxHeight: "450px",
   margin: "auto",
   display: "grid",
   position: "fixed",

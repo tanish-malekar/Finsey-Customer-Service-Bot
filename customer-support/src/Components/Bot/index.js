@@ -12,7 +12,7 @@ const Bot = () => {
         <GetStarted />
         <GetDetails />
         <ChatWindow />
-        <VoiceWindow/>
+        <VoiceWindow type='general-query'/>
     </BotContainer>
   );
 };
