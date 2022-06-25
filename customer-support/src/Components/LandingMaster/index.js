@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import CaringImage from "../../images/caringImage.svg";
 import RedCar from "../../images/redCar.svg";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
+import Bot from "../Bot";
 
 const LandingMaster = () => {
   const [showBot, setShowBot] = useState(false);

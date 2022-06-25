@@ -4,6 +4,7 @@ import { useStore } from "../../../store";
 import { CHAT_WINDOW } from "../../../constants";
 import ChatHeader from "./ChatHeader";
 import ChatTextField from "./ChatTextField";
+import Message from "../Message";
 
 let dummyChat = [
   {
