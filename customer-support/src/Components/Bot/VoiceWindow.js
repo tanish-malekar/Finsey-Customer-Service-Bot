@@ -5,6 +5,7 @@ import { useStore } from "../../store";
 import ChatHeader from './ChatWindow/ChatHeader';
 import Message from './Message';
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
+import Button from '../Button'
 
 let dummyChat = [
   {
@@ -66,6 +67,12 @@ const VoiceWindow = ()=>{
                 <SupportAgentIcon/>
               </Avatar>
               <Typography variant="h6" textAlign="center">Customer Care Associate</Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <Button size='small' status='danger'> Disconnect Call </Button>
+            </Grid>
+            <Grid item xs={12} height="60px" xs={12} borderTop="1px solid gray">
+              
             </Grid>
           </Grid>
           <Grid
