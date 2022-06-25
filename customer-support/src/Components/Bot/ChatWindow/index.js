@@ -58,7 +58,7 @@ const ChatWindow = () => {
           display="block"
         >
           {dummyChat.map((chat, index) => (
-            {/*message*/}
+            <Message {...chat} key={index} />
           ))}
         </Grid>
             <ChatTextField />
