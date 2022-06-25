@@ -71,7 +71,7 @@ const VoiceWindow = ()=>{
             <Grid item xs={12}>
               <Button size='small' status='danger'> Disconnect Call </Button>
             </Grid>
-            <Grid item xs={12} height="60px" xs={12} borderTop="1px solid gray">
+            <Grid item xs={12} height="60px" borderTop="1px solid gray">
               
             </Grid>
           </Grid>

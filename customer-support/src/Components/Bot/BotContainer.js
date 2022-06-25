@@ -15,6 +15,10 @@ export const BotPaper = styled(Paper, {
   right: "50px",
   overflow: "hidden",
   bottom: "120px",
+  transition:"0.5s",
+  "& > .MuiGrid-root":{
+    gridColumn: "1 / 6"
+  }
 }));
 
 const BotContainer = ({ showBot, children }) => {
