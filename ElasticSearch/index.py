@@ -165,7 +165,7 @@ es = Elasticsearch(
 # #es = Elasticsearch("https://localhost:9200")
 # print("SEARCHING:SEARCH RESULTS")
 
-query = "What is a car insurance?"
+query = "What are the types of car insurance?"
 
 rest = es.search(index="some36", body={
                 "query": {"match": {'text': query}}})  # search query
