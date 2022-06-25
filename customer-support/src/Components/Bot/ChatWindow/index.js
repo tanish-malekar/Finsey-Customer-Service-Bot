@@ -43,9 +43,9 @@ let dummyChat = [
 ];
 
 const ChatWindow = () => {
-  const [botStepper] = useStore();
+  const [state] = useStore();
   return (
-    <Fade in={botStepper === CHAT_WINDOW} unmountOnExit>
+    <Fade in={state.botStepper === CHAT_WINDOW} unmountOnExit>
       <Grid container>
           <ChatHeader />
         <Grid

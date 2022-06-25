@@ -44,9 +44,9 @@ let dummyChat = [
 ];
 
 const VoiceWindow = ()=>{
-    const [botStepper,] = useStore();
+    const [state,] = useStore();
     return(
-    <Fade in={botStepper === VOICE_WINDOW} unmountOnExit>
+    <Fade in={state.botStepper === VOICE_WINDOW} unmountOnExit>
       <Grid container>
         <ChatHeader />
         <Grid container xs={12}>

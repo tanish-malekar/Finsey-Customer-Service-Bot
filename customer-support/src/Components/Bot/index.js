@@ -6,9 +6,9 @@ import GetStarted from "./GetStarted";
 import VoiceWindow from "./VoiceWindow";
 
 
-const Bot = ({ showBot }) => {
+const Bot = () => {
   return (
-    <BotContainer showBot={showBot}>
+    <BotContainer>
         <GetStarted />
         <GetDetails />
         {/* <ChatWindow /> */}

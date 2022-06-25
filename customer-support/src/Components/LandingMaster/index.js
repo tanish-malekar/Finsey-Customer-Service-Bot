@@ -4,9 +4,11 @@ import CaringImage from "../../images/caringImage.svg";
 import RedCar from "../../images/redCar.svg";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import Bot from "../Bot";
+import { useStore } from "../../store";
+import { toggleShowBot } from "../../reducer/BotStepperReducer";
 
 const LandingMaster = () => {
-  const [showBot, setShowBot] = useState(false);
+  const [, dispatch] = useStore(); 
   return (
     <Grid
       container
@@ -32,13 +34,13 @@ const LandingMaster = () => {
       <Grid item xs={4}>
         <img src={RedCar} alt="red car" />
       </Grid>
-      <Bot showBot={showBot} />
+      <Bot />
       <Fab
         color="primary"
         aria-label="add"
         sx={{ position: "fixed", right: 50, bottom: 50 }}
         onClick={() => {
-          setShowBot(!showBot);
+          dispatch(toggleShowBot());
         }}
       >
         <SupportAgentIcon />

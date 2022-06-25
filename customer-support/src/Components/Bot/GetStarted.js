@@ -7,16 +7,16 @@ import Style from "./BotStyle.module.css";
 import Button from "../Button";
 import { GET_DETAILS, GET_STARTED } from "../../constants";
 import { useStore } from "../../store";
-import { setBotStepper } from "../../reducer/BotStepperReducer";
+import { setBotStepper, toggleShowBot } from "../../reducer/BotStepperReducer";
 const GetStarted = () => {
-  const [botStepper, dispatch] = useStore();
+  const [state, dispatch] = useStore();
 
   const onGetStarted = () => {
     dispatch(setBotStepper(GET_DETAILS));
   };
 
   return (
-    <Fade in={botStepper === GET_STARTED} unmountOnExit>
+    <Fade in={state.botStepper === GET_STARTED} unmountOnExit>
       <Grid container padding={2} minWidth="100%">
         <Grid
           item
@@ -36,7 +36,7 @@ const GetStarted = () => {
             </Grid>
             <Grid item>
               <div className={Style.GrayButton}>
-                <img src={Dash} alt="close" width="15px" hight="15px" />
+                <img src={Dash} alt="close" width="15px" hight="15px" onClick={()=>{dispatch(toggleShowBot())}}/>
               </div>
             </Grid>
           </Grid>

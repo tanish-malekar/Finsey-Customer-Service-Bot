@@ -5,7 +5,7 @@ import { CHAT_WINDOW, GET_DETAILS, VOICE_WINDOW } from "../../constants";
 import { useStore } from "../../store";
 import { setBotStepper } from "../../reducer/BotStepperReducer";
 const GetDetails = () => {
-  const [botStepper, dispatch] = useStore();
+  const [state, dispatch] = useStore();
 
   const onContinue = () => {
     // dispatch(setBotStepper(CHAT_WINDOW));
@@ -13,7 +13,7 @@ const GetDetails = () => {
   };
 
   return (
-    <Fade in={botStepper === GET_DETAILS} unmountOnExit>
+    <Fade in={state.botStepper === GET_DETAILS} unmountOnExit>
       <Grid container padding={2}>
         <Grid item xs={12} textAlign="center">
           <Typography variant="h5" marginBottom={2}>
