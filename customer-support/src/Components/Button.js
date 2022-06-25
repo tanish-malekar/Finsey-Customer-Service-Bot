@@ -8,7 +8,7 @@ const StyledButton = styled(Button, {
   width: size==="small"?"60%":"90%",
   margin: "auto",
   color: "white",
-  padding: "10px 0",
+  padding: size==="small"?"3px 0":"10px 0",
   display: "block",
   "&:hover": {
     backgroundColor: status==="danger"?"darkred":theme.palette.primary.dark,
