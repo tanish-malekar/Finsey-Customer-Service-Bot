@@ -1,11 +1,12 @@
 import React from 'react';
-import { Avatar, Fade, Grid, Typography } from "@mui/material";
+import { Avatar, Fab, Fade, Grid, Typography } from "@mui/material";
 import { VOICE_WINDOW } from "../../constants";
 import { useStore } from "../../store";
 import ChatHeader from './ChatWindow/ChatHeader';
 import Message from './Message';
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import Button from '../Button'
+import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
 
 let dummyChat = [
   {
@@ -71,8 +72,16 @@ const VoiceWindow = ()=>{
             <Grid item xs={12}>
               <Button size='small' status='danger'> Disconnect Call </Button>
             </Grid>
-            <Grid item xs={12} height="60px" borderTop="1px solid gray">
-              
+            <Grid item container xs={12} height="60px" borderTop="1px solid gray">
+              <Grid item xs={12}></Grid>
+              <Grid item xs={12}>
+              <Fab
+                color="primary"
+                aria-label="add"
+              >
+                <KeyboardVoiceIcon />
+              </Fab>
+              </Grid>
             </Grid>
           </Grid>
           <Grid
