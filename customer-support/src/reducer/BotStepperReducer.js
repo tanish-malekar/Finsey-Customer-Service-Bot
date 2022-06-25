@@ -16,12 +16,17 @@ export const toggleShowBot = () => ({
 
 export const BotStepperReducer = (state = initialState, action) => {
   if (action.type === SET_STEPPER) {
+    console.log({
+      ...state,
+      botStepper:action.payload
+    })
     return{
       ...state,
       botStepper:action.payload
     }
   }
   else if(action.type === TOGGLE_BOT){
+    console.log("here")
     return{
       ...state,
       showBot:!state.showBot

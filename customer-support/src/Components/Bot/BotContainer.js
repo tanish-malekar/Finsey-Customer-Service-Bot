@@ -35,6 +35,7 @@ const BotContainer = ({ children }) => {
             <Slide in={state.showBot} direction="up" timeout={{ exit: 700, enter: 100 }}>
             {
                 <BotPaper 
+                onClick={(e)=>{e.stopPropagation()}}
                 fullWidth={state.botStepper===VOICE_WINDOW}>
                 {children}
                 </BotPaper>

@@ -35,8 +35,8 @@ const GetStarted = () => {
               </div>
             </Grid>
             <Grid item>
-              <div className={Style.GrayButton}>
-                <img src={Dash} alt="close" width="15px" hight="15px" onClick={()=>{dispatch(toggleShowBot())}}/>
+              <div className={Style.GrayButton} onClick={()=>{dispatch(toggleShowBot())}}>
+                <img src={Dash} alt="close" width="15px" hight="15px"/>
               </div>
             </Grid>
           </Grid>
