@@ -19,17 +19,22 @@ const useChat = ()=>{
                 ]
             )
         })
-        axios.post('localhost:8000/api/test',{
+        axios.post('http://127.0.0.1:8000/api/test',{
             message:message
-        })
+        },  {
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+            }
+          })
         .then(response=>{
+            console.log(response);
             setMessages(messages=>{
                 return(
                     [
                         ...messages,
                         {
                             from:"bot",
-                            message:response.data.message 
+                            message:response.data.data
                         }
                     ]
                 )
