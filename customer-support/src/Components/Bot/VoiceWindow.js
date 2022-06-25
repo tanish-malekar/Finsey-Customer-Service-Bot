@@ -7,54 +7,13 @@ import Message from './Message';
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import Button from '../Button'
 import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
-import {useState} from 'react';
-import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
-
-
+import useVoice from '../../hooks/useVoice';
 
 const VoiceWindow = ({type})=>{
     const [state,] = useStore();
-    const [currentSpeaker, setCurrentSpeaker] = useState("bot");
-    const [chat, setChat] = useState([]);
 
-    useEffect(() => {
-      if(state.botStepper === VOICE_WINDOW)
-        type=='general-query'?messageByBot("Hello! I am here to answer any query you have about insurances. Ask away!"):messageByBot("Hello! I am here to help you file the claim...");
-    }, [state.botStepper])
+    const {messages,transcript,currentSpeaker} = useVoice();
     
-    
-    const {
-      transcript,
-      listening,
-      resetTranscript,
-      browserSupportsSpeechRecognition
-    } = useSpeechRecognition();
-
-    const speakerAPI = new SpeechSynthesisUtterance();
-    const speechHandler = (msg) => {
-      speakerAPI.lang = "en-US";
-      speakerAPI.text = msg;
-      window.speechSynthesis.speak(speakerAPI);
-    }
-
-    const messageByBot = (msg) =>{
-      let newChat = {
-        from: "bot",
-        message: msg,
-      }
-      setChat((prevChat)=>([newChat, ...prevChat]));
-      speechHandler(msg);
-    }
-
-    const messageByUser = (msg) =>{
-      let newChat = {
-        from: "user",
-        message: msg,
-      }
-      setChat((prevChat)=>([newChat, ...prevChat]));
-    }
-
-
     return(
     <Fade in={state.botStepper === VOICE_WINDOW} unmountOnExit>
       <Grid container>
@@ -82,7 +41,6 @@ const VoiceWindow = ({type})=>{
               <Button size='small' status='danger'> Disconnect Call </Button>
             </Grid>
             <Grid item container xs={12} height="60px" borderTop="1px solid gray">
-              <Grid item xs={12}></Grid>
               <Grid item xs={12}>
               <Typography variant='body1'>{transcript}</Typography>
               <Fab
@@ -107,7 +65,7 @@ const VoiceWindow = ({type})=>{
           xs={6}
           borderLeft="1px solid gray"
         >
-          {chat.map((chat, index) => (
+          {messages.map((chat, index) => (
             <Message {...chat} key={index} />
           ))}
         </Grid>
