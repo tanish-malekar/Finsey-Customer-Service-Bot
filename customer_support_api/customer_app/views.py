@@ -34,3 +34,9 @@ def Test(request):
             "success":False,
             "error":"invalid data"
         })
+
+
+@api_view(['POST'])
+def PostClaimDetails(request):
+    print(request.POST)
+    return JsonResponse({"data":"hi"})

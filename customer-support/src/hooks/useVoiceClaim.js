@@ -41,18 +41,6 @@ const useVoiceClaim = ()=>{
     }, [state.botStepper])
 
     useEffect(()=>{
-        if(stepper===4){
-            let formData = new FormData();
-            formData.append("dandt",form.dandt)
-            formData.append("address",form.address)
-            formData.append("message",form.message)
-            formData.append("video",form.video)
-        }
-    },[stepper])
-
-
-    useEffect(()=>{
-        console.log(listening,transcript);
         if(listening===false && transcript!=="")
             if(transcript.toLowerCase()==="no")
                 dispatch(toggleShowBot());
@@ -60,9 +48,31 @@ const useVoiceClaim = ()=>{
                 sendQuery(transcript);
       },[listening])
 
+    useEffect(()=>{
+        if(stepper===4){
+            let formData = new FormData();
+            formData.append("dandt",form.dandt)
+            formData.append("address",form.address)
+            formData.append("message",form.message)
+            formData.append("video",form.video)
+            axios.post('http://127.0.0.1:8000/api/FileClaim',formData,  {
+                headers: {
+                    "Content-type": "multipart/form-data",
+                }
+            })
+            .then(response=>{
+                // resetTranscript();
+                // console.log(response);
+                // if(response.data.success){
+                //     messageByBot(response.data.data);
+                //     messageByBot("Is there anything else I can help you with?");}
+                // else
+                //     messageByBot("Please repeat your question.")
+            })
+        }
+    },[stepper])
 
-
-    const messageByBot = () =>{
+    const messageByBot = (id=stepper) =>{
         SpeechRecognition.stopListening();
         let newChat = {
           from: "bot",
@@ -101,7 +111,11 @@ const useVoiceClaim = ()=>{
         let newForm  = {...form}
         newForm[index[stepper]] = msg
         setForm(newForm);
-        setStepper(stepper+1);
+        resetTranscript();
+        setStepper((stepper)=>{
+            messageByBot(stepper+1);
+            return(stepper+1)
+        });
       }
 
       return({messages,transcript,currentSpeaker})

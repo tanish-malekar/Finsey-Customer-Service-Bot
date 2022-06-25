@@ -2,5 +2,6 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path('test', Test)
+    path('test', Test),
+    path('FileClaim',PostClaimDetails)
 ]
