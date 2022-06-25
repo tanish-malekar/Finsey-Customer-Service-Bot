@@ -1,14 +1,19 @@
-import { GET_STARTED, SET_STEPPER, TOGGLE_BOT, SET_MODE } from "../constants";
+import { GET_STARTED, SET_STEPPER, TOGGLE_BOT, SET_MODE, SET_LANGUAGE } from "../constants";
 
 export const initialState = {
-  mode:'chat',
+  mode:'genaral-queries',
   botStepper:GET_STARTED,
-  showBot:false
+  showBot:false,
+  language:"hi-IN"
 };
 
 export const setBotStepper = (step) => ({
   type: SET_STEPPER,
   payload: step,
+});
+export const setLanguage = (lang) => ({
+  type: SET_LANGUAGE,
+  payload: lang,
 });
 
 export const setMode = (mode) => ({
@@ -35,6 +40,12 @@ export const BotStepperReducer = (state = initialState, action) => {
     return{
       ...state,
       showBot:!state.showBot
+    }
+  }
+  else if(action.type === SET_LANGUAGE){
+    return{
+      ...state,
+      languageS:action.payload
     }
   }
   else if(action.type === SET_MODE){
