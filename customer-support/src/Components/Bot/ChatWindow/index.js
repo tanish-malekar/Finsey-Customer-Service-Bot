@@ -6,11 +6,14 @@ import ChatHeader from "./ChatHeader";
 import ChatTextField from "./ChatTextField";
 import Message from "../Message";
 import useChat from "../../../hooks/useChat";
+import useChatClaim from "../../../hooks/useChatClaim";
 
 const ChatWindow = () => {
   const [state] = useStore();
   const {messages, sendQuery} = useChat();
+  const {messagesClaim, messageByUser} = useChatClaim();
 
+  
   return (
     <Fade in={state.botStepper === CHAT_WINDOW} unmountOnExit>
       <Grid container>
@@ -25,11 +28,13 @@ const ChatWindow = () => {
           alignItems="self-start"
           display="block"
         >
-          {messages.map((chat, index) => (
+          {state.mode=='claim'?messagesClaim.map((chat, index) => (
+            <Message {...chat} key={index} />
+          )):messages.map((chat, index) => (
             <Message {...chat} key={index} />
           ))}
         </Grid>
-            <ChatTextField sendQuery={sendQuery}/>
+            <ChatTextField sendQuery={state.mode=='claim'?messageByUser:sendQuery}/>
       </Grid>
     </Fade>
   );
