@@ -40,7 +40,7 @@ const ChatTextField = ({sendQuery}) => {
           bottom: "50%",
           transform: "translateY(50%)",
         }}
-        onClick={()=>{sendQuery(value)}}
+        onClick={()=>{sendQuery(value);setValue("")}}
       />
     </Grid>
   );
