@@ -2,7 +2,7 @@ import React from "react";
 import SendIcon from "@mui/icons-material/Send";
 import { Grid, TextField } from "@mui/material";
 
-const ChatTextField = () => {
+const ChatTextField = ({sendQuery}) => {
   return (
     <Grid
       item

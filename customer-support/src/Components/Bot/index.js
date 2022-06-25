@@ -11,7 +11,7 @@ const Bot = () => {
     <BotContainer>
         <GetStarted />
         <GetDetails />
-        {/* <ChatWindow /> */}
+        <ChatWindow />
         <VoiceWindow/>
     </BotContainer>
   );
