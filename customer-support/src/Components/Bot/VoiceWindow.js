@@ -18,8 +18,9 @@ const VoiceWindow = ({type})=>{
     const [chat, setChat] = useState([]);
 
     useEffect(() => {
-      type=='general-query'?messageByBot("Hello! I am here to answer any query you have about insurances. Ask away!"):messageByBot("Hello! I am here to help you file the claim...");
-    }, [])
+      if(state.botStepper === VOICE_WINDOW)
+        type=='general-query'?messageByBot("Hello! I am here to answer any query you have about insurances. Ask away!"):messageByBot("Hello! I am here to help you file the claim...");
+    }, [state.botStepper])
     
     
     const {
@@ -33,7 +34,7 @@ const VoiceWindow = ({type})=>{
     const speechHandler = (msg) => {
       speakerAPI.lang = "en-US";
       speakerAPI.text = msg;
-      window.speechSynthesis.speak(msg);
+      window.speechSynthesis.speak(speakerAPI);
     }
 
     const messageByBot = (msg) =>{
@@ -43,8 +44,6 @@ const VoiceWindow = ({type})=>{
       }
       setChat((prevChat)=>([newChat, ...prevChat]));
       speechHandler(msg);
-
-
     }
 
     const messageByUser = (msg) =>{
