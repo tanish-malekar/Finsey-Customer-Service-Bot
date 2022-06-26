@@ -17,7 +17,7 @@ const useChatClaim = () =>{
         if(questionNo<=2){
             setMessagesClaim(async (prevMessages)=>[...prevMessages, 
                 {from: "bot", 
-                message:state.language=='en-US'?claimMessages[questionNo]:(state.language=='hi-IN'?await transalate(claimMessages[questionNo], 'hi'):await transalate(claimMessages[questionNo], 'mr'))
+                message:state.language=='en-US'?claimMessages[questionNo]:(state.language=='hi-IN'?await transalate(claimMessages[questionNo], { to: "hi" }):await transalate(claimMessages[questionNo], { to: "mr" }))
                 }]);
             setQuestionNo((prev)=>(prev+1));
         }

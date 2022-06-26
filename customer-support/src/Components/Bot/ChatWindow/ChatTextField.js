@@ -44,8 +44,9 @@ const ChatTextField = ({sendQuery}) => {
           transform: "translateY(50%)",
         }}
         onClick={async ()=>{
-          let text = state.language=='en-US'?value:await transalate(value, 'en');
-          sendQuery(text)}}
+          //let englishQuery = await transalate(value, { to: "en" });
+          console.log(value)
+          sendQuery(value)}}
       />
     </Grid>
   );

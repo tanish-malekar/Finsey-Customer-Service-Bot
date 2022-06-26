@@ -9,6 +9,7 @@ import Button from '../Button'
 import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
 import {useState} from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import transalate from '../../helper/translate';
 
 
 
@@ -31,9 +32,9 @@ const VoiceWindow = ({type})=>{
     } = useSpeechRecognition();
 
     const speakerAPI = new SpeechSynthesisUtterance();
-    const speechHandler = (msg) => {
-      speakerAPI.lang = "en-US";
-      speakerAPI.text = msg;
+    const speechHandler = async (msg) => {
+      speakerAPI.lang = state.language;
+      speakerAPI.text = state.language=='en-US'?msg:(state.language =='hi-IN'?await transalate(msg, 'hi'):await transalate(msg, 'mr'))
       window.speechSynthesis.speak(speakerAPI);
     }
 
