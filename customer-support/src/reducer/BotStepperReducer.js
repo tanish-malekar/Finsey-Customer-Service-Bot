@@ -1,10 +1,10 @@
 import { GET_STARTED, SET_STEPPER, TOGGLE_BOT, SET_MODE, SET_LANGUAGE } from "../constants";
 
 export const initialState = {
-  mode:'genaral-queries',
+  mode:null,
   botStepper:GET_STARTED,
   showBot:false,
-  language:"hi-IN"
+  language:"en-US"
 };
 
 export const setBotStepper = (step) => ({

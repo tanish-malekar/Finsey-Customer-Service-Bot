@@ -43,15 +43,15 @@ const GetStarted = () => {
         </Grid>
         <Grid item xs={12} paddingTop={10} paddingBottom={7} textAlign="center">
           <Typography variant="h5" marginBottom={2}>
-            {state.language=='en-US'?"Chat With Finsey":(state.language=='hi-IN'?"फिन्से के साथ बाते":"फिन्से सह बोला")}
+            {state.language=='en-US'?"Chat With Finsey":(state.language==='hi-IN'?"फिन्से के साथ बाते":"फिन्से सह बोला")}
           </Typography>
           <Typography variant="body1">
-            {state.language=='en-US'?"How can we help you?":(state.language=='hi-IN'?"हम आपकी कैसे मदद कर सकते हैं?":"आम्ही तुम्हाला कशी मदत करू शकतो?")}
+            {state.language=='en-US'?"How can we help you?":(state.language==='hi-IN'?"हम आपकी कैसे मदद कर सकते हैं?":"आम्ही तुम्हाला कशी मदत करू शकतो?")}
           </Typography>
         </Grid>
         <Grid item xs={12} alignItems="center">
           <Button onClick={onGetStarted}>
-            {state.language=='en-US'?"GET STARTED":(state.language=='hi-IN'?"शुरू करें":"सुरू करा")}
+            {state.language=='en-US'?"GET STARTED":(state.language==='hi-IN'?"शुरू करें":"सुरू करा")}
           </Button>
         </Grid>
       </Grid>

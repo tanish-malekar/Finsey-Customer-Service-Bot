@@ -8,14 +8,28 @@ import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import Button from '../Button'
 import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
 import useVoice from '../../hooks/useVoice';
+import useVoiceClaim from '../../hooks/useVoiceClaim';
 
 const VoiceWindow = ({type})=>{
     const [state,] = useStore();
 
-    const {messages,transcript,currentSpeaker} = useVoice();
-    
+    const [genMessages,genTranscript,genCurrentSpeaker] = useVoice();
+    const [claimMessages,claimTranscript,claimCurrentSpeaker] = useVoiceClaim();
+    let messages,transcript,currentSpeaker;
+
+    if(state.mode==='claims'){
+      messages = claimMessages
+      transcript = claimTranscript
+      currentSpeaker = claimCurrentSpeaker
+    }
+    else{
+      messages = genMessages
+      transcript = genTranscript
+      currentSpeaker = genCurrentSpeaker
+    }
+
     return(
-    <Fade in={state.botStepper === VOICE_WINDOW} unmountOnExit>
+    <Fade in={state.botStepper === VOICE_WINDOW && state.mode} unmountOnExit>
       <Grid container>
         <ChatHeader />
         <Grid container xs={12}>
@@ -50,7 +64,7 @@ const VoiceWindow = ({type})=>{
               >
                 <KeyboardVoiceIcon />
               </Fab>
-              {currentSpeaker=="bot"?<Typography variant='subtitle1'>Please wait</Typography>:<Typography variant='subtitle1'>Speak now</Typography>}
+              {currentSpeaker==="bot"?<Typography variant='subtitle1'>Please wait</Typography>:<Typography variant='subtitle1'>Speak now</Typography>}
               </Grid>
             </Grid>
           </Grid>

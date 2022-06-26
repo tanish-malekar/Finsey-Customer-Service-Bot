@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import { useStore } from "../store";
+import { VOICE_WINDOW } from "../constants";
+import { toggleShowBot } from "../reducer/BotStepperReducer";
 
 const claimMessages = [
     "Hey! I am here to help you file your claim! Can you please provide me with the date and time of the accident",
@@ -36,20 +39,12 @@ const useVoiceClaim = ()=>{
     } = useSpeechRecognition();
 
     useEffect(() => {
-        if(state.botStepper === VOICE_WINDOW)
+        if(state.botStepper === VOICE_WINDOW && state.mode==="claims")
           messageByBot()
     }, [state.botStepper])
 
     useEffect(()=>{
-        if(listening===false && transcript!=="")
-            if(transcript.toLowerCase()==="no")
-                dispatch(toggleShowBot());
-            else
-                sendQuery(transcript);
-      },[listening])
-
-    useEffect(()=>{
-        if(stepper===4){
+        if(stepper===4 && state.mode==="claims"){
             let formData = new FormData();
             formData.append("dandt",form.dandt)
             formData.append("address",form.address)
@@ -84,7 +79,7 @@ const useVoiceClaim = ()=>{
     
     useEffect(()=>{
         console.log(listening,transcript);
-        if(listening===false && transcript!=="")
+        if(listening===false && transcript!=="" && state.mode==="claims")
             if(transcript.toLowerCase()==="cancel")
                 dispatch(toggleShowBot());
             else
@@ -118,7 +113,7 @@ const useVoiceClaim = ()=>{
         });
       }
 
-      return({messages,transcript,currentSpeaker})
+      return([messages,transcript,currentSpeaker])
     
 }
 

@@ -1,23 +1,23 @@
 import React from "react";
 import { Fade, Grid, TextField, Typography } from "@mui/material";
 import Button from "../Button";
-import { CHAT_WINDOW, SELECT_MODE, VOICE_WINDOW } from "../../constants";
+import { CHAT_WINDOW, VOICE_WINDOW } from "../../constants";
 import { useStore } from "../../store";
-import { setBotStepper } from "../../reducer/BotStepperReducer";
-const SelectMode = () => {
+import { setBotStepper, setMode } from "../../reducer/BotStepperReducer";
+const SelectActivity = () => {
   const [state, dispatch] = useStore();
 
   const onChat = () => {
-    dispatch(setBotStepper(CHAT_WINDOW));
+    dispatch(setMode('genaral-queries'));
     // dispatch(setBotStepper(VOICE_WINDOW));
   };
-  const onCall = () => {
+  const onClaim = () => {
     // dispatch(setBotStepper(CHAT_WINDOW));
-    dispatch(setBotStepper(VOICE_WINDOW));
+    dispatch(setMode('claims'));
   };
 
   return (
-    <Fade in={state.botStepper === SELECT_ACTIVITY} unmountOnExit>
+    <Fade in={(state.botStepper === CHAT_WINDOW || state.botStepper === VOICE_WINDOW) && !state.mode} unmountOnExit>
       <Grid container padding={2}>
         <Grid item xs={12} textAlign="center">
           <Typography variant="h5" marginBottom={2}>
@@ -38,4 +38,4 @@ const SelectMode = () => {
   );
 };
 
-export default SelectMode;
+export default SelectActivity;

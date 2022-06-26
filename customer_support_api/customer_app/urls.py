@@ -3,5 +3,6 @@ from .views import *
 
 urlpatterns = [
     path('test', Test),
-    path('FileClaim',PostClaimDetails)
+    path('FileClaim',PostClaimDetails),
+    path('getQueryVideo',GetQueryVideo)
 ]

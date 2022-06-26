@@ -15,7 +15,7 @@ const ChatWindow = () => {
 
   
   return (
-    <Fade in={state.botStepper === CHAT_WINDOW} unmountOnExit>
+    <Fade in={state.botStepper === CHAT_WINDOW && state.mode} unmountOnExit>
       <Grid container>
           <ChatHeader />
         <Grid

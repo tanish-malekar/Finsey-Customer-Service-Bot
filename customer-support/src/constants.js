@@ -7,3 +7,4 @@ export const TOGGLE_BOT = "TOGGLE_BOT";
 export const SELECT_MODE = "SELECT_MODE";
 export const SET_MODE = "SET_MODE";
 export const SET_LANGUAGE= "SET_LANGUAGE";
+export const VIDEO_WINDOW= "VIDEO_WINDOW";

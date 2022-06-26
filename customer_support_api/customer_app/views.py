@@ -1,5 +1,6 @@
 from django.http import JsonResponse
 from rest_framework.decorators import api_view
+from .models import *
 from elasticsearch import Elasticsearch
 from elasticsearch import Elasticsearch, helpers
 
@@ -35,6 +36,26 @@ def Test(request):
             "error":"invalid data"
         })
 
+@api_view(['POST'])
+def GetQueryVideo(request):
+    try:
+        data = request.data['message']
+        ans = dummy(data)
+        print(ans)
+        img = ImageLink.objects.filter(answer = ans)
+        print(img)
+        return JsonResponse({
+            "success":True,
+            "data":{
+                "url":img[0].url,
+                "text":img[0].answer
+            }
+        })
+    except Exception as ex:
+        return JsonResponse({
+            "success":False,
+            "error":str(ex)
+        })
 
 @api_view(['POST'])
 def PostClaimDetails(request):

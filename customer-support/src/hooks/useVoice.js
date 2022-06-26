@@ -17,14 +17,14 @@ const useVoice = ()=>{
     } = useSpeechRecognition();
 
     useEffect(() => {
-        if(state.botStepper === VOICE_WINDOW)
+        if(state.botStepper === VOICE_WINDOW && state.mode!=="claims")
           messageByBot("Hello! I am here to answer any query you have about insurances. Ask away!")
     }, [state.botStepper])
 
 
     useEffect(()=>{
         console.log(listening,transcript);
-        if(listening===false && transcript!=="")
+        if(listening===false && transcript!=="" && state.mode!=="claims")
             if(transcript.toLowerCase()==="no")
                 dispatch(toggleShowBot());
             else
@@ -77,7 +77,7 @@ const useVoice = ()=>{
         })
       }
 
-    return({messages,transcript,currentSpeaker})
+    return([messages,transcript,currentSpeaker])
 }
 
 export default useVoice;

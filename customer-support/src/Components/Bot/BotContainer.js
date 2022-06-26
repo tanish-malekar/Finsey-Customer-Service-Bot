@@ -36,7 +36,7 @@ const BotContainer = ({ children }) => {
             {
                 <BotPaper 
                 onClick={(e)=>{e.stopPropagation()}}
-                fullWidth={state.botStepper===VOICE_WINDOW}>
+                fullWidth={state.botStepper===VOICE_WINDOW && state.mode}>
                 {children}
                 </BotPaper>
             }
