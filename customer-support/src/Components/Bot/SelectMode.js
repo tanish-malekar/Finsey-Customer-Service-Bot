@@ -1,7 +1,7 @@
 import React from "react";
 import { Fade, Grid, TextField, Typography } from "@mui/material";
 import Button from "../Button";
-import { CHAT_WINDOW, SELECT_MODE, VOICE_WINDOW } from "../../constants";
+import { CHAT_WINDOW, SELECT_MODE, VOICE_WINDOW, VIDEO_WINDOW } from "../../constants";
 import { useStore } from "../../store";
 import { setBotStepper } from "../../reducer/BotStepperReducer";
 const SelectMode = () => {
@@ -14,6 +14,10 @@ const SelectMode = () => {
   const onCall = () => {
     // dispatch(setBotStepper(CHAT_WINDOW));
     dispatch(setBotStepper(VOICE_WINDOW));
+  };
+  const onVideo = () => {
+    // dispatch(setBotStepper(CHAT_WINDOW));
+    dispatch(setBotStepper(VIDEO_WINDOW));
   };
 
   return (
@@ -35,6 +39,11 @@ const SelectMode = () => {
         <Grid item xs={12} alignItems="center" paddingBottom={4}>
           <Button onClick={onCall}>
             {state.language=='en-US'?"VOICE CALL":(state.language=='hi-IN'?"वॉइस कॉल":"वॉइस कॉल")}
+          </Button>
+        </Grid>
+        <Grid item xs={12} alignItems="center" paddingBottom={4}>
+          <Button onClick={onVideo}>
+            {state.language=='en-US'?"VIDEO CALL":(state.language=='hi-IN'?"वॉइस कॉल":"वॉइस कॉल")}
           </Button>
         </Grid>
       </Grid>

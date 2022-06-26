@@ -1,7 +1,7 @@
 import React from "react";
 import { Fade, Grid, TextField, Typography } from "@mui/material";
 import Button from "../Button";
-import { CHAT_WINDOW, VOICE_WINDOW } from "../../constants";
+import { CHAT_WINDOW, VOICE_WINDOW, VIDEO_WINDOW } from "../../constants";
 import { useStore } from "../../store";
 import { setBotStepper, setMode } from "../../reducer/BotStepperReducer";
 const SelectActivity = () => {
@@ -17,7 +17,7 @@ const SelectActivity = () => {
   };
 
   return (
-    <Fade in={(state.botStepper === CHAT_WINDOW || state.botStepper === VOICE_WINDOW) && !state.mode} unmountOnExit>
+    <Fade in={(state.botStepper === CHAT_WINDOW || state.botStepper === VOICE_WINDOW || state.botStepper === VIDEO_WINDOW) && !state.mode} unmountOnExit>
       <Grid container padding={2}>
         <Grid item xs={12} textAlign="center">
           <Typography variant="h5" marginBottom={2}>

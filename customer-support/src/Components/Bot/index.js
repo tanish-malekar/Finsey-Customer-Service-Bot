@@ -5,6 +5,7 @@ import GetDetails from "./GetDetails";
 import GetStarted from "./GetStarted";
 import SelectActivity from "./SelectActivity";
 import SelectMode from "./SelectMode";
+import VideoWindow from "./VideoWindow";
 import VoiceWindow from "./VoiceWindow";
 
 
@@ -17,6 +18,7 @@ const Bot = () => {
         <VoiceWindow type='general-query'/>
         <SelectMode/>
         <SelectActivity/>
+        <VideoWindow/>
     </BotContainer>
   );
 };

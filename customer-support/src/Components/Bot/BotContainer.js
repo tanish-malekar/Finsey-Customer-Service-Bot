@@ -1,6 +1,6 @@
 import { Backdrop, Fade, Paper, Slide } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { VOICE_WINDOW } from "../../constants";
+import { VIDEO_WINDOW, VOICE_WINDOW } from "../../constants";
 import { toggleShowBot } from "../../reducer/BotStepperReducer";
 import { useStore } from "../../store";
 
@@ -36,7 +36,7 @@ const BotContainer = ({ children }) => {
             {
                 <BotPaper 
                 onClick={(e)=>{e.stopPropagation()}}
-                fullWidth={state.botStepper===VOICE_WINDOW && state.mode}>
+                fullWidth={state.botStepper===VOICE_WINDOW || state.botStepper===VIDEO_WINDOW && state.mode}>
                 {children}
                 </BotPaper>
             }
