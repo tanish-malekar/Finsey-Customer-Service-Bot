@@ -17,6 +17,7 @@
     "react-scripts": "^5.0.1",
     "react-speech-recognition": "^3.9.1",
     "styled-components": "^5.3.5",
+    "translate": "^1.4.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

@@ -8,6 +8,7 @@ import Message from "../Message";
 import useChat from "../../../hooks/useChat";
 import useChatClaim from "../../../hooks/useChatClaim";
 
+
 const ChatWindow = () => {
   const [state] = useStore();
   const {messages, sendQuery} = useChat();
