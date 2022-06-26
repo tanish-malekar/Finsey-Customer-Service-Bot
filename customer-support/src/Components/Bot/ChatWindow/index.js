@@ -34,7 +34,9 @@ const ChatWindow = () => {
           )):messages.map((chat, index) => (
             <Message {...chat} key={index} />
           ))}
+          <input type="file" />
         </Grid>
+        
             <ChatTextField sendQuery={state.mode=='claim'?messageByUser:sendQuery}/>
       </Grid>
     </Fade>
