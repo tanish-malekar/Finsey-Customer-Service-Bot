@@ -4,7 +4,7 @@ export const initialState = {
   mode:null,
   botStepper:GET_STARTED,
   showBot:false,
-  language:"en-US"
+  language:"hi-IN"
 };
 
 export const setBotStepper = (step) => ({

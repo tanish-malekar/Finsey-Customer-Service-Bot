@@ -9,6 +9,11 @@ import Button from '../Button'
 import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
 import useVoice from '../../hooks/useVoice';
 import useVoiceClaim from '../../hooks/useVoiceClaim';
+import {useState} from 'react';
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import transalate from '../../helper/translate';
+
+
 
 const VoiceWindow = ({type})=>{
     const [state,] = useStore();
@@ -16,6 +21,12 @@ const VoiceWindow = ({type})=>{
     const [genMessages,genTranscript,genCurrentSpeaker] = useVoice();
     const [claimMessages,claimTranscript,claimCurrentSpeaker] = useVoiceClaim();
     let messages,transcript,currentSpeaker;
+    const speakerAPI = new SpeechSynthesisUtterance();
+    const speechHandler = async (msg) => {
+      speakerAPI.lang = state.language;
+      speakerAPI.text = state.language=='en-US'?msg:(state.language =='hi-IN'?await transalate(msg, 'hi'):await transalate(msg, 'mr'))
+      window.speechSynthesis.speak(speakerAPI);
+    }
 
     if(state.mode==='claims'){
       messages = claimMessages
