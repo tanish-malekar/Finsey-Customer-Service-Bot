@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import SendIcon from "@mui/icons-material/Send";
 import { Grid, TextField } from "@mui/material";
+import transalate from "../../../helper/translate";
+import { useStore } from "../../../store";
 
 const ChatTextField = ({sendQuery}) => {
   const [value,setValue] = useState("");
+  const [state] = useStore();
   return (
     <Grid
       item
@@ -40,7 +43,9 @@ const ChatTextField = ({sendQuery}) => {
           bottom: "50%",
           transform: "translateY(50%)",
         }}
-        onClick={()=>{sendQuery(value);setValue("")}}
+        onClick={async ()=>{
+          let text = state.language=='en-US'?value:await transalate(value, 'en');
+          sendQuery(text)}}
       />
     </Grid>
   );
