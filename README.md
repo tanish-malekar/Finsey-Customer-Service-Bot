@@ -1,7 +1,7 @@
 # PS9_Horizon
 
 An AI based chatbot system for the customer care service of Bajaj Allianz General Insurance Company(BAGIC) to reduce the current customer contact footprint from 40.3% to below 5% and move the same to chat, voice and video bots.
-<b/><b/>
+<b><b>
 Users can interact with the chat system in 3 ways: Chat, Voice (Voice Bot) and Video (DeepFake).
 <b/><b/>
 The user can ask their query in the form of text or audio. The processed answer will be returned in one of the 3 ways mentioned above depending on the user’s choice.
