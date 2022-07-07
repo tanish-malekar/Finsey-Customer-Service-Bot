@@ -1,4 +1,4 @@
-# PS9_Horizon
+# Finsey Customer Service Bot
 
 An AI based chatbot system for the customer care service of Bajaj Allianz General Insurance Company(BAGIC) to reduce the current customer contact footprint from 40.3% to below 5% and move the same to chat, voice and video bots.
 <br><br>
