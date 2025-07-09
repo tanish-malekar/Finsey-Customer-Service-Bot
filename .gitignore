@@ -1,0 +1,33 @@
+# Node
+node_modules/
+frontend/node_modules/
+
+# Python
+backend/venv/
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Django
+backend/db.sqlite3
+*.sqlite3
+
+# Environment and secrets
+.env
+backend/.env
+backend/gcp_key.json
+
+# Build outputs
+frontend/dist/
+frontend/build/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Misc
+*.lockb

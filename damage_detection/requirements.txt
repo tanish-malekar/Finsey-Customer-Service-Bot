@@ -1,5 +1,0 @@
-icrawler==0.6.6
-keras==2.9.0
-numpy==1.18.4
-opencv_python==4.2.0.34
-Pillow==9.1.1
