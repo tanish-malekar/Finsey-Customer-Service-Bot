@@ -3,7 +3,7 @@
 A Retrieval-Augmented Generation (RAG) chatbot system for the customer care service of Bajaj Allianz General Insurance Company (BAGIC).
 
 ## Overview
-This application leverages state-of-the-art AI and vector search to provide accurate, context-aware answers to customer queries. It is designed to reduce the customer contact footprint and move interactions to chat, voice, and video bots.
+This application leverages state-of-the-art AI and vector search to provide accurate, context-aware answers to customer queries. It is designed to reduce the customer contact footprint and move interactions to chat, and voice bots.
 
 ## How it Works
 - **Data Collection:** Website data is scraped from the BAGIC website using BeautifulSoup.
