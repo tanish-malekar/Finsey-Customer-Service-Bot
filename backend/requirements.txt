@@ -1,0 +1,10 @@
+django
+djangorestframework
+pinecone
+langchain
+langchain-google-vertexai
+langchain-pinecone
+beautifulsoup4
+requests
+tqdm
+python-dotenv 
