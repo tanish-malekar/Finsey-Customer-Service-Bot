@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Send, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { VoiceRecorder } from "./VoiceRecorder";
 
 interface ChatInputProps {
   onSendMessage: (message: string) => void;
@@ -28,6 +29,10 @@ export const ChatInput = ({ onSendMessage, isLoading, disabled }: ChatInputProps
     }
   };
 
+  const handleVoiceTranscript = (transcript: string) => {
+    setMessage(transcript);
+  };
+
   return (
     <div className="border-t bg-background/80 backdrop-blur-sm p-4">
       <div className="max-w-4xl mx-auto">
@@ -37,7 +42,7 @@ export const ChatInput = ({ onSendMessage, isLoading, disabled }: ChatInputProps
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               onKeyPress={handleKeyPress}
-              placeholder="Ask me anything about BAGIC services..."
+              placeholder="Ask me anything about BAGIC services... or click the mic to speak"
               className={cn(
                 "min-h-12 max-h-32 resize-none rounded-xl border-2 transition-all duration-200",
                 "focus:border-primary focus:ring-2 focus:ring-primary/20",
@@ -47,6 +52,11 @@ export const ChatInput = ({ onSendMessage, isLoading, disabled }: ChatInputProps
               rows={1}
             />
           </div>
+          
+          <VoiceRecorder 
+            onTranscript={handleVoiceTranscript}
+            disabled={disabled || isLoading}
+          />
           
           <Button
             type="submit"
@@ -69,7 +79,7 @@ export const ChatInput = ({ onSendMessage, isLoading, disabled }: ChatInputProps
         </form>
         
         <p className="text-xs text-muted-foreground mt-2 text-center">
-          Press Enter to send, Shift+Enter for new line
+          Press Enter to send, Shift+Enter for new line, or use voice input
         </p>
       </div>
     </div>

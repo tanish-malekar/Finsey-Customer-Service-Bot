@@ -1,8 +1,12 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { Building2, Shield } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Building2, Shield, Volume2, VolumeX } from "lucide-react";
+import { useVoice } from "@/hooks/useVoice";
 
 export const ChatHeader = () => {
+  const { isVoiceEnabled, toggleVoice } = useVoice();
+
   return (
     <div 
       className="border-b bg-background/80 backdrop-blur-sm p-4"
@@ -25,6 +29,19 @@ export const ChatHeader = () => {
         </div>
         
         <div className="flex items-center gap-2">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={toggleVoice}
+            className="h-8 w-8 p-0 rounded-full hover:bg-primary/10"
+          >
+            {isVoiceEnabled ? (
+              <Volume2 className="h-4 w-4 text-primary" />
+            ) : (
+              <VolumeX className="h-4 w-4 text-muted-foreground" />
+            )}
+          </Button>
+          
           <Badge variant="secondary" className="text-xs">
             <Shield className="h-3 w-3 mr-1" />
             Secure Chat

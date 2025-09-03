@@ -7,4 +7,6 @@ langchain-pinecone
 beautifulsoup4
 requests
 tqdm
-python-dotenv 
+python-dotenv
+google-cloud-speech
+google-cloud-texttospeech 

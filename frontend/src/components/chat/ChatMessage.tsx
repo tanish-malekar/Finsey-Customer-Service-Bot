@@ -1,6 +1,7 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Bot, User } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { VoicePlayer } from "./VoicePlayer";
 
 interface Message {
   id: string;
@@ -49,16 +50,22 @@ export const ChatMessage = ({ message }: ChatMessageProps) => {
           {message.text}
         </p>
         
-        <div
-          className={cn(
-            "mt-1 text-xs opacity-70",
-            message.isUser ? "text-right" : "text-left"
+        <div className="flex items-center justify-between mt-2">
+          <div
+            className={cn(
+              "text-xs opacity-70",
+              message.isUser ? "text-right" : "text-left"
+            )}
+          >
+            {message.timestamp.toLocaleTimeString([], { 
+              hour: '2-digit', 
+              minute: '2-digit' 
+            })}
+          </div>
+          
+          {!message.isUser && (
+            <VoicePlayer text={message.text} />
           )}
-        >
-          {message.timestamp.toLocaleTimeString([], { 
-            hour: '2-digit', 
-            minute: '2-digit' 
-          })}
         </div>
       </div>
     </div>

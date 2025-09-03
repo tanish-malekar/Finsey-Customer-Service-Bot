@@ -1,5 +1,6 @@
 import { useState, useCallback } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { useVoice } from "./useVoice";
 
 export interface Message {
   id: string;
@@ -26,6 +27,7 @@ export const useChat = (): UseChatReturn => {
   ]);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const { isVoiceEnabled, speakText } = useVoice();
 
   const generateId = () => Math.random().toString(36).substr(2, 9);
 
@@ -69,6 +71,11 @@ export const useChat = (): UseChatReturn => {
 
       setMessages(prev => [...prev, botMessage]);
       
+      // Auto-play voice if enabled
+      if (isVoiceEnabled) {
+        speakText(botResponseText);
+      }
+      
     } catch (error) {
       console.error("Chat API error:", error);
       
@@ -89,7 +96,7 @@ export const useChat = (): UseChatReturn => {
     } finally {
       setIsLoading(false);
     }
-  }, [toast]);
+  }, [toast, isVoiceEnabled, speakText]);
 
   const clearMessages = useCallback(() => {
     setMessages([{
