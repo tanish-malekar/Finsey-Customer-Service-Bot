@@ -1,20 +1,34 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Bot, User } from "lucide-react";
+import { Bot, User, Mic, Volume2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { VoicePlayer } from "./VoicePlayer";
+import { useState, useEffect } from "react";
 
 interface Message {
   id: string;
   text: string;
   isUser: boolean;
   timestamp: Date;
+  wasVoiceQuestion?: boolean;
 }
 
 interface ChatMessageProps {
   message: Message;
+  previousMessage?: Message;
 }
 
-export const ChatMessage = ({ message }: ChatMessageProps) => {
+export const ChatMessage = ({ message, previousMessage }: ChatMessageProps) => {
+  const [isAutoSpeaking, setIsAutoSpeaking] = useState(false);
+
+  // Auto-speak for bot messages if the user asked via voice
+  useEffect(() => {
+    if (!message.isUser && previousMessage?.wasVoiceQuestion) {
+      setIsAutoSpeaking(true);
+      const timer = setTimeout(() => setIsAutoSpeaking(false), 3000); // Hide after 3 seconds
+      return () => clearTimeout(timer);
+    }
+  }, [message, previousMessage]);
+
   return (
     <div
       className={cn(
@@ -49,6 +63,22 @@ export const ChatMessage = ({ message }: ChatMessageProps) => {
         <p className="text-sm leading-relaxed whitespace-pre-wrap break-words">
           {message.text}
         </p>
+        
+        {/* Voice indicator for user messages */}
+        {message.isUser && message.wasVoiceQuestion && (
+          <div className="flex items-center gap-1 mt-2 text-xs text-muted-foreground">
+            <Mic className="h-3 w-3" />
+            <span>Voice message</span>
+          </div>
+        )}
+        
+        {/* Auto-speaking indicator for bot messages */}
+        {!message.isUser && isAutoSpeaking && (
+          <div className="flex items-center gap-1 mt-2 text-xs text-primary animate-pulse">
+            <Volume2 className="h-3 w-3" />
+            <span>Speaking...</span>
+          </div>
+        )}
         
         <div className="flex items-center justify-between mt-2">
           <div

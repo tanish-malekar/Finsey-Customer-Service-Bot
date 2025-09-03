@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { VoiceRecorder } from "./VoiceRecorder";
 
 interface ChatInputProps {
-  onSendMessage: (message: string) => void;
+  onSendMessage: (message: string, wasVoiceQuestion?: boolean) => void;
   isLoading: boolean;
   disabled?: boolean;
 }

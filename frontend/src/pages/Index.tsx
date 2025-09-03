@@ -34,8 +34,12 @@ const Index = () => {
           }}
         >
           <div className="py-4">
-            {messages.map((message) => (
-              <ChatMessage key={message.id} message={message} />
+            {messages.map((message, index) => (
+              <ChatMessage 
+                key={message.id} 
+                message={message} 
+                previousMessage={index > 0 ? messages[index - 1] : undefined}
+              />
             ))}
             
             {isLoading && <TypingIndicator />}

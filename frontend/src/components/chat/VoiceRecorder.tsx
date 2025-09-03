@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/tooltip";
 
 interface VoiceRecorderProps {
-  onSendMessage: (message: string) => void;
+  onSendMessage: (message: string, wasVoiceQuestion?: boolean) => void;
   onProcessingChange: (processing: boolean) => void;
   disabled?: boolean;
 }
@@ -69,7 +69,7 @@ export const VoiceRecorder = ({ onSendMessage, onProcessingChange, disabled }: V
                 
                 // Auto-send the message if it's not empty (don't populate input)
                 if (transcript.trim()) {
-                  onSendMessage(transcript.trim());
+                  onSendMessage(transcript.trim(), true); // Mark as voice question
                 }
               } else {
                 console.error('Speech-to-text failed:', response.statusText);
