@@ -13,10 +13,11 @@ interface ChatInputProps {
 
 export const ChatInput = ({ onSendMessage, isLoading, disabled }: ChatInputProps) => {
   const [message, setMessage] = useState("");
+  const [isProcessing, setIsProcessing] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (message.trim() && !isLoading && !disabled) {
+    if (message.trim() && !isLoading && !isProcessing && !disabled) {
       onSendMessage(message.trim());
       setMessage("");
     }
@@ -29,8 +30,8 @@ export const ChatInput = ({ onSendMessage, isLoading, disabled }: ChatInputProps
     }
   };
 
-  const handleVoiceTranscript = (transcript: string) => {
-    setMessage(transcript);
+  const handleProcessingChange = (processing: boolean) => {
+    setIsProcessing(processing);
   };
 
   return (
@@ -42,25 +43,26 @@ export const ChatInput = ({ onSendMessage, isLoading, disabled }: ChatInputProps
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               onKeyPress={handleKeyPress}
-              placeholder="Ask me anything about BAGIC services... or click the mic to speak"
+              placeholder="Enter your message"
               className={cn(
                 "min-h-12 max-h-32 resize-none rounded-xl border-2 transition-all duration-200",
-                "focus:border-primary focus:ring-2 focus:ring-primary/20",
+                "focus:border-primary focus:ring-20",
                 "placeholder:text-muted-foreground/70"
               )}
-              disabled={disabled}
+              disabled={disabled || isLoading || isProcessing}
               rows={1}
             />
           </div>
           
           <VoiceRecorder 
-            onTranscript={handleVoiceTranscript}
+            onSendMessage={onSendMessage}
+            onProcessingChange={handleProcessingChange}
             disabled={disabled || isLoading}
           />
           
           <Button
             type="submit"
-            disabled={!message.trim() || isLoading || disabled}
+            disabled={!message.trim() || isLoading || isProcessing || disabled}
             className={cn(
               "h-12 w-12 rounded-xl shrink-0 transition-all duration-200",
               "hover:scale-105 active:scale-95",
@@ -70,7 +72,7 @@ export const ChatInput = ({ onSendMessage, isLoading, disabled }: ChatInputProps
               background: "var(--gradient-primary)"
             }}
           >
-            {isLoading ? (
+            {isLoading || isProcessing ? (
               <Loader2 className="h-4 w-4 animate-spin" />
             ) : (
               <Send className="h-4 w-4" />
@@ -79,7 +81,7 @@ export const ChatInput = ({ onSendMessage, isLoading, disabled }: ChatInputProps
         </form>
         
         <p className="text-xs text-muted-foreground mt-2 text-center">
-          Press Enter to send, Shift+Enter for new line, or use voice input
+            Type your message or click the mic to speak (click again when done)
         </p>
       </div>
     </div>
