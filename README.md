@@ -1,195 +1,113 @@
-# Finsey Customer Service Bot
+# 🎙️ Finsey Customer Service Bot
 
-A comprehensive customer service chatbot with voice interaction capabilities powered by Google Cloud AI services.
+A Retrieval-Augmented Generation (RAG) chatbot and voice assistant system for the customer care service of **Bajaj Allianz General Insurance Company (BAGIC)**.
 
-## Features
+---
 
-### 🤖 Chat Interface
-- **RAG-powered responses** using Pinecone vector database and Google Vertex AI
-- **Real-time chat** with typing indicators and message history
-- **Responsive design** optimized for all devices
+## 📖 Overview
 
-### 🎤 Voice Interaction
-- **Speech-to-Text**: Convert voice input to text using Google Cloud Speech-to-Text
-- **Text-to-Speech**: Play back bot responses using Google Cloud Text-to-Speech
-- **Voice recording**: Click the microphone button to record and send voice messages
-- **Auto-playback**: Automatically play bot responses when voice is enabled
-- **Voice toggle**: Enable/disable voice features with the header button
+This application leverages state-of-the-art AI, vector search, and voice processing to provide accurate, context-aware answers to customer queries.  
+It is designed to reduce the customer contact footprint by moving interactions to **automated chat and voice bots**.
 
-### 🔒 Security & Performance
-- **Secure chat** with proper authentication
-- **Real-time processing** with loading states
-- **Error handling** with user-friendly messages
+---
 
-## Tech Stack
+## 🧠 How it Works
 
-### Backend
-- **Django** with Django REST Framework
-- **Pinecone** for vector database
-- **Google Cloud Vertex AI** for embeddings and LLM
-- **Google Cloud Speech-to-Text** for voice recognition
-- **Google Cloud Text-to-Speech** for voice synthesis
+- **Data Collection:** Website data is scraped from the BAGIC website using `BeautifulSoup`.
+- **Embedding:** The scraped data is embedded using Google's `gemini-embedding-001` model via **Vertex AI**.
+- **Vector Database:** Embeddings and metadata are stored in **PineconeDB** for fast semantic search.
+- **RAG Agent:** **LangChain** orchestrates retrieval and answer generation, using **Gemini LLMs** for final response synthesis.
+- **Backend:** **Django** is used to create REST APIs that power both the chat and voice interfaces.
+- **Frontend:** Built with **React**, **Vite**, and **TailwindCSS** for a modern, responsive UI.
+- **Voice Support:**
+  - Real-time **speech-to-text** via **Google Vertex AI Speech-to-Text**
+  - Human-like audio responses using **Google Vertex AI Text-to-Speech (WaveNet voices)**
 
-### Frontend
-- **React 18** with TypeScript
-- **Vite** for fast development
-- **Tailwind CSS** for styling
-- **Shadcn/ui** components
-- **Web Audio API** for voice recording
+---
 
-## Setup Instructions
+## ✨ Features
 
-### Prerequisites
-1. **Google Cloud Project** with billing enabled
-2. **Pinecone account** and API key
-3. **Python 3.9+** and **Node.js 18+**
+- Chatbot interface (text and voice-enabled)
+- RAG pipeline for accurate, context-aware answers
+- Fast semantic search with **PineconeDB**
+- Real-time voice support via **Vertex AI Speech-to-Text** and **Text-to-Speech**
+- Scalable, production-ready backend and frontend
 
-### Backend Setup
+---
 
-1. **Clone and navigate to backend directory:**
-   ```bash
-   cd backend
-   ```
+## 🧰 Tech Stack
 
-2. **Create virtual environment:**
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
+- **Frontend:** React, Vite, TailwindCSS
+- **Backend:** Django, Django REST Framework
+- **RAG Orchestration:** LangChain
+- **Embeddings:** Gemini (`gemini-embedding-001` via Vertex AI)
+- **Vector DB:** PineconeDB
+- **Scraping:** BeautifulSoup
+- **Voice Integration:**
+  - Google Vertex AI Speech-to-Text
+  - Google Vertex AI Text-to-Speech (WaveNet)
 
-3. **Install dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
+---
 
-4. **Set up environment variables:**
-   Create a `.env` file in the backend directory:
-   ```env
-   PINECONE_API_KEY=your_pinecone_api_key
-   PINECONE_INDEX=your_pinecone_index_name
-   GCP_PROJECT=your_gcp_project_id
-   GCP_LOCATION=us-central1
-   EMBED_MODEL=gemini-embedding-001
-   LLM_MODEL=gemini-2.5-pro
-   GOOGLE_APPLICATION_CREDENTIALS=path/to/your/gcp_key.json
-   ```
+## ⚙️ Setup
 
-5. **Set up Google Cloud credentials:**
-   - Download your service account key JSON file
-   - Place it in the backend directory
-   - Update the `GOOGLE_APPLICATION_CREDENTIALS` path in `.env`
+### 1. 🛠️ Backend
 
-6. **Run migrations:**
-   ```bash
-   python manage.py migrate
-   ```
+- **Requirements:** Python 3.9+
+- Install dependencies:
 
-7. **Start the backend server:**
-   ```bash
-   python manage.py runserver
-   ```
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-### Frontend Setup
+- Set environment variables (see `.env` template)
+- Run server:
 
-1. **Navigate to frontend directory:**
-   ```bash
-   cd frontend
-   ```
+    ```bash
+    python manage.py runserver
+    ```
 
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+---
 
-3. **Start the development server:**
-   ```bash
-   npm run dev
-   ```
+### 2. 💻 Frontend
 
-## Voice Features Configuration
+- **Requirements:** Node.js 16+
+- Commands:
 
-### Google Cloud Speech-to-Text
-- **Audio format**: WebM with Opus codec (48kHz)
-- **Language**: English (US)
-- **Model**: Latest long-form model
-- **Features**: Automatic punctuation, enhanced models
+    ```bash
+    cd frontend
+    npm install
+    npm run dev
+    ```
 
-### Google Cloud Text-to-Speech
-- **Voice**: en-US-Neural2-F (Female)
-- **Audio format**: MP3
-- **Rate**: 0.9x (slightly slower for clarity)
-- **Pitch**: Natural
+---
 
-### Browser Compatibility
-- **Chrome/Edge**: Full support for all voice features
-- **Firefox**: Limited support for Web Audio API
-- **Safari**: Basic support, may require HTTPS
+### 3. 🎤 Voice Support with Vertex AI
 
-## Usage
+- Enable the following in **Google Cloud Console**:
+  - ✅ Vertex AI Speech-to-Text
+  - ✅ Vertex AI Text-to-Speech
+- Create a service account and download the credentials JSON
+- Set the authentication environment variable:
 
-### Voice Input
-1. **Click the microphone button** in the chat input area
-2. **Speak your message** clearly
-3. **Click again to stop** recording
-4. **Review the transcript** and send if correct
+    ```bash
+    export GOOGLE_APPLICATION_CREDENTIALS="/path/to/credentials.json"
+    ```
 
-### Voice Output
-1. **Enable voice** using the toggle in the header
-2. **Bot responses** will automatically play
-3. **Click the speaker icon** on any bot message to replay
-4. **Disable voice** to stop auto-playback
+---
 
-### Tips for Best Results
-- **Clear speech**: Speak clearly and at a normal pace
-- **Quiet environment**: Minimize background noise
-- **Good microphone**: Use a quality microphone for better recognition
-- **Internet connection**: Ensure stable connection for API calls
+## 📝 License
 
-## API Endpoints
+**MIT**
 
-- `POST /api/ask/` - Send chat message and get RAG response
-- `POST /api/speech-to-text/` - Convert audio to text
-- `POST /api/text-to-speech/` - Convert text to audio
+---
 
-## Troubleshooting
+## 🧠 Powered By
 
-### Common Issues
-
-1. **Voice recording not working:**
-   - Check microphone permissions in browser
-   - Ensure HTTPS connection (required for media access)
-   - Verify browser supports MediaRecorder API
-
-2. **Speech recognition errors:**
-   - Check Google Cloud credentials
-   - Verify audio format compatibility
-   - Check network connectivity
-
-3. **Text-to-speech not working:**
-   - Verify Google Cloud TTS API is enabled
-   - Check service account permissions
-   - Ensure text is not empty
-
-### Performance Optimization
-- **Batch processing**: Process multiple audio chunks efficiently
-- **Caching**: Cache generated audio for repeated playback
-- **Error handling**: Graceful fallbacks for API failures
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Support
-
-For support and questions:
-- Check the troubleshooting section
-- Review Google Cloud documentation
-- Open an issue on GitHub
+- [Google Vertex AI](https://cloud.google.com/vertex-ai)
+- [Vertex AI Speech-to-Text](https://cloud.google.com/vertex-ai/docs/speech)
+- [Vertex AI Text-to-Speech](https://cloud.google.com/vertex-ai/docs/text-to-speech)
+- [Pinecone Vector DB](https://www.pinecone.io/)
+- [LangChain](https://www.langchain.com/)
+- [React](https://reactjs.org/)
+- [Django](https://www.djangoproject.com/)
