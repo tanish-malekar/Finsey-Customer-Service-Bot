@@ -1,3 +1,16 @@
+import os
+
+# Path where the key will be saved
+GCP_KEY_PATH = os.path.join(os.path.dirname(__file__), "gcp_key.json")
+
+# Write the environment variable contents to disk
+with open(GCP_KEY_PATH, "w") as f:
+    f.write(os.environ["GCP_KEY_JSON"])
+
+# Set GOOGLE_APPLICATION_CREDENTIALS to point to the file
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = GCP_KEY_PATH
+
+
 """
 Django settings for config project.
 
