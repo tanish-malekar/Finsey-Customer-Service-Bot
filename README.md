@@ -75,11 +75,11 @@ It crawls and indexes your website content, then uses advanced AI models to prov
     npm install
     npm run dev
     ```
-#### 3. 🎤 Voice Support
+#### 3. 🎤 Google Cloud Support
 
 * Enable APIs in Google Cloud Console:
-    * ✅ Vertex AI Speech-to-Text
-    * ✅ Vertex AI Text-to-Speech
+    * ✅ Google Cloud Speech-to-Text
+    * ✅ Google Cloud Text-to-Speech
 * Create a service account & download credentials JSON.
 * **Export credentials path:**
     ```
@@ -95,6 +95,7 @@ MIT
 ### 🧠 Powered By
 
 * Google Vertex AI
+* Google Cloud Platform 
 * Pinecone Vector DB
 * LangChain
 * React
