@@ -17,9 +17,9 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
 
-    --primary: 200 95% 45%;
+    --primary: 221 83% 53%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 200 85% 55%;
+    --primary-glow: 221 83% 63%;
 
     --secondary: 210 40% 95%;
     --secondary-foreground: 222 47% 11%;
@@ -27,7 +27,7 @@ All colors MUST be HSL.
     --muted: 210 40% 96%;
     --muted-foreground: 215 16% 47%;
 
-    --accent: 200 70% 50%;
+    --accent: 221 83% 53%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -35,18 +35,18 @@ All colors MUST be HSL.
 
     --border: 214 32% 91%;
     --input: 214 32% 91%;
-    --ring: 200 95% 45%;
+    --ring: 221 83% 53%;
 
-    --chat-user: 200 95% 45%;
+    --chat-user: 221 83% 53%;
     --chat-user-foreground: 0 0% 100%;
     --chat-bot: 0 0% 100%;
     --chat-bot-foreground: 222 47% 11%;
     --chat-background: 210 30% 97%;
 
-    --gradient-primary: linear-gradient(135deg, hsl(200 95% 45%), hsl(200 85% 55%));
+    --gradient-primary: linear-gradient(135deg, hsl(221 83% 53%), hsl(262 83% 58%));
     --gradient-chat: linear-gradient(180deg, hsl(210 30% 97%), hsl(210 20% 98%));
     
-    --shadow-chat: 0 4px 20px hsl(200 95% 45% / 0.1);
+    --shadow-chat: 0 4px 20px hsl(221 83% 53% / 0.1);
     --shadow-message: 0 2px 8px hsl(0 0% 0% / 0.1);
     
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -54,19 +54,12 @@ All colors MUST be HSL.
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -116,5 +109,57 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
+}
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Enhanced scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(210 40% 96%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(221 83% 53%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(221 83% 45%);
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }

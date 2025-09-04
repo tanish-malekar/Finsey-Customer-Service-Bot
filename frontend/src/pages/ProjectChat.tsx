@@ -6,7 +6,17 @@ import { ChatInput } from "@/components/chat/ChatInput";
 import { TypingIndicator } from "@/components/chat/TypingIndicator";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Globe, AlertCircle } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { 
+  ArrowLeft, 
+  Globe, 
+  AlertCircle, 
+  Bot, 
+  Sparkles, 
+  RotateCcw,
+  MessageSquare,
+  Zap
+} from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 export interface Message {
@@ -32,7 +42,7 @@ const ProjectChat = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "welcome",
-      text: "Hello! I'm your AI assistant. I've been trained on the content of this website and can answer questions about it. How can I help you today?",
+      text: "Hello! I'm your AI assistant powered by RAGify. I've been trained on the content of this website and can answer questions about it. How can I help you today?",
       isUser: false,
       timestamp: new Date()
     }
@@ -200,7 +210,7 @@ const ProjectChat = () => {
   const clearMessages = () => {
     setMessages([{
       id: "welcome",
-      text: "Hello! I'm your AI assistant. I've been trained on the content of this website and can answer questions about it. How can I help you today?",
+      text: "Hello! I'm your AI assistant powered by RAGify. I've been trained on the content of this website and can answer questions about it. How can I help you today?",
       isUser: false,
       timestamp: new Date()
     }]);
@@ -208,50 +218,57 @@ const ProjectChat = () => {
 
   if (!projectInfo) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/50">
         <div className="text-center">
-          <Globe className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-          <p className="text-gray-500">Loading project information...</p>
+          <div className="mx-auto w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center mb-6">
+            <Bot className="h-8 w-8 text-white" />
+          </div>
+          <h3 className="text-xl font-semibold text-gray-900 mb-2">Loading AI Assistant</h3>
+          <p className="text-gray-600">Preparing your personalized chatbot...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div 
-      className="min-h-screen flex flex-col"
-      style={{
-        background: "var(--gradient-chat)"
-      }}
-    >
-      {/* Custom Header with Project Info */}
-      <div className="bg-background/80 backdrop-blur-sm border-b">
-        <div className="max-w-4xl mx-auto px-4 py-3">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/50">
+      {/* Enhanced Header */}
+      <div className="bg-white/80 backdrop-blur-sm border-b border-gray-200 shadow-sm">
+        <div className="max-w-6xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => navigate("/")}
-                className="p-2"
+                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
               >
-                <ArrowLeft className="h-4 w-4" />
+                <ArrowLeft className="h-5 w-5" />
               </Button>
-              <div>
-                <h1 className="text-lg font-semibold text-foreground">{projectInfo.name}</h1>
-                <p className="text-sm text-muted-foreground flex items-center gap-1">
-                  <Globe className="h-3 w-3" />
-                  {projectInfo.url}
-                </p>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
+                  <Bot className="h-5 w-5 text-white" />
+                </div>
+                <div>
+                  <h1 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                    {projectInfo.name}
+                  </h1>
+                  <p className="text-sm text-gray-600 flex items-center gap-1">
+                    <Globe className="h-3 w-3" />
+                    {projectInfo.url}
+                  </p>
+                </div>
               </div>
             </div>
             
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <Button
                 variant="outline"
                 size="sm"
                 onClick={clearMessages}
+                className="border-gray-200 hover:bg-gray-50"
               >
+                <RotateCcw className="h-4 w-4 mr-2" />
                 Clear Chat
               </Button>
             </div>
@@ -262,10 +279,7 @@ const ProjectChat = () => {
       <div className="flex-1 flex flex-col min-h-0">
         <ScrollArea 
           ref={scrollAreaRef}
-          className="flex-1 chat-background"
-          style={{
-            background: "var(--chat-background)"
-          }}
+          className="flex-1"
         >
           <div className="py-4">
             {messages.map((message, index) => (

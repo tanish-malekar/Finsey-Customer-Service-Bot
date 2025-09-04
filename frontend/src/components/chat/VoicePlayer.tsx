@@ -92,18 +92,23 @@ export const VoicePlayer = ({ text, disabled }: VoicePlayerProps) => {
       variant="ghost"
       size="sm"
       className={cn(
-        "h-8 w-8 p-0 rounded-full transition-all duration-200",
-        "hover:bg-primary/10 hover:scale-105",
-        "disabled:opacity-50 disabled:scale-100",
-        isPlaying && "text-primary"
+        // Ultra-compact, no circular background
+        "h-5 w-5 p-0 rounded-none bg-transparent border-0 shadow-none",
+        // Subtle hover color only
+        "text-gray-600 hover:text-blue-600 transition-colors",
+        // Remove any default ring/hover bg
+        "ring-0 hover:bg-transparent",
+        // Disabled
+        "disabled:opacity-50 disabled:cursor-not-allowed",
+        isPlaying && "text-blue-600"
       )}
     >
       {isLoading ? (
-        <Loader2 className="h-3 w-3 animate-spin" />
+        <Loader2 className="h-2 w-2 animate-spin" />
       ) : isPlaying ? (
-        <VolumeX className="h-3 w-3" />
+        <VolumeX className="h-2 w-2" />
       ) : (
-        <Volume2 className="h-3 w-3" />
+        <Volume2 className="h-2 w-2" />
       )}
     </Button>
   );

@@ -1,6 +1,6 @@
 import { useState, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
-import { Mic, MicOff, Loader2 } from "lucide-react";
+import { Mic, MicOff, Loader2, Radio } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   Tooltip,
@@ -20,8 +20,6 @@ export const VoiceRecorder = ({ onSendMessage, onProcessingChange, disabled }: V
   const [isProcessing, setIsProcessing] = useState(false);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
-
-
 
   const startRecording = useCallback(async () => {
     try {
@@ -129,24 +127,36 @@ export const VoiceRecorder = ({ onSendMessage, onProcessingChange, disabled }: V
               onClick={handleClick}
               disabled={disabled || isProcessing}
               className={cn(
-                "h-12 w-12 rounded-xl shrink-0 transition-all duration-200",
+                "h-14 w-14 rounded-2xl shrink-0 transition-all duration-200 shadow-lg",
                 "hover:scale-105 active:scale-95",
-                "disabled:opacity-50 disabled:scale-100",
-                isRecording && "bg-red-500 hover:bg-red-600"
+                "disabled:opacity-50 disabled:scale-100 disabled:shadow-lg",
+                "focus:ring-4 focus:ring-blue-500/20",
+                isRecording 
+                  ? "bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 shadow-red-500/25" 
+                  : "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
               )}
-              style={!isRecording ? {
-                background: "var(--gradient-primary)"
-              } : undefined}
             >
               {isRecording ? (
-                <MicOff className="h-4 w-4" />
+                <div className="flex items-center gap-1">
+                  <MicOff className="h-5 w-5 text-white" />
+                  <div className="flex gap-1">
+                    <div className="w-1 h-3 bg-white rounded-full animate-pulse" />
+                    <div className="w-1 h-3 bg-white rounded-full animate-pulse [animation-delay:0.1s]" />
+                    <div className="w-1 h-3 bg-white rounded-full animate-pulse [animation-delay:0.2s]" />
+                  </div>
+                </div>
+              ) : isProcessing ? (
+                <Loader2 className="h-5 w-5 animate-spin text-white" />
               ) : (
-                <Mic className="h-4 w-4" />
+                <Mic className="h-5 w-5 text-white" />
               )}
             </Button>
           </TooltipTrigger>
-          <TooltipContent>
-            <p>{getTooltipText()}</p>
+          <TooltipContent side="top" className="bg-gray-900 text-white border-gray-700">
+            <div className="flex items-center gap-2">
+              <Radio className="h-3 w-3" />
+              <p>{getTooltipText()}</p>
+            </div>
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
