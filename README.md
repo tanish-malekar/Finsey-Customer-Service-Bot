@@ -28,8 +28,8 @@ It crawls and indexes your website content, then uses advanced AI models to prov
 3. **Vector Database:** Indexed in **PineconeDB** for fast semantic search.  
 4. **RAG Pipeline:** Orchestrated with **LangChain**, combining retrieval with **Gemini LLMs** for contextual answers.  
 5. **Voice Features:**  
-   - **Speech-to-Text:** Real-time transcription with **Google Vertex AI Speech-to-Text**  
-   - **Text-to-Speech:** Human-like voice replies using **Google Vertex AI WaveNet**  
+   - **Speech-to-Text:** Real-time transcription with **Google Cloud Speech-to-Text**  
+   - **Text-to-Speech:** Human-like voice replies using **Google Cloud Text-to-Speech**  
 
 ---
 
@@ -40,7 +40,7 @@ It crawls and indexes your website content, then uses advanced AI models to prov
 - **RAG Engine:** LangChain + Gemini Models  
 - **Vector DB:** PineconeDB  
 - **Scraping:** BeautifulSoup  
-- **Voice AI:** Google Vertex AI Speech-to-Text & Text-to-Speech  
+- **Voice AI:** Google Cloud Speech-to-Text & Text-to-Speech  
 
 ---
 
