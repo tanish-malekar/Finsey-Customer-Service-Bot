@@ -1,6 +1,8 @@
 # Node
 node_modules/
 frontend/node_modules/
+frontend/package-lock.json
+frontend/.env
 
 # Python
 backend/venv/
