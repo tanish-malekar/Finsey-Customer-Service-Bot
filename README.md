@@ -36,7 +36,7 @@ It crawls and indexes your website content, then uses advanced AI models to prov
 ## 🧰 Tech Stack  
 
 - **Frontend:** React, Vite, TailwindCSS  
-- **Backend:** Django, Django REST Framework  
+- **Backend:** Django, SQLite
 - **RAG Engine:** LangChain + Gemini Models  
 - **Vector DB:** PineconeDB  
 - **Scraping:** BeautifulSoup  
@@ -53,9 +53,10 @@ It crawls and indexes your website content, then uses advanced AI models to prov
 
 * **Install dependencies:**
     ```
+    cd backend
     pip install -r requirements.txt
     ```
-* Configure environment variables (see `.env` template).
+* Configure environment variables.
 * **Run the server:**
     ```
     python manage.py runserver
@@ -94,4 +95,5 @@ MIT
 * LangChain
 * React
 * Django
-* 
+* SQLite
+  
