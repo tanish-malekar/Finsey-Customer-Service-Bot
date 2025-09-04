@@ -80,7 +80,7 @@ const ProjectChat = () => {
       } else {
         toast({
           title: "Project Not Found",
-          description: "The requested project could not be found.",
+          description: "The requested assistant could not be found.",
           variant: "destructive",
         });
         navigate("/");
@@ -88,7 +88,7 @@ const ProjectChat = () => {
     } catch (error) {
       toast({
         title: "Connection Error",
-        description: "Unable to fetch project information.",
+        description: "Unable to fetch assistant information.",
         variant: "destructive",
       });
       navigate("/");
