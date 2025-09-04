@@ -44,12 +44,54 @@ It crawls and indexes your website content, then uses advanced AI models to prov
 
 ---
 
-## ⚙️ Setup  
 
-### 1. 🛠️ Backend  
+### ⚙️ Setup
 
-- **Requirements:** Python 3.9+  
-- Install dependencies:  
+#### 1. 🛠️ Backend
 
-  ```bash
-  pip install -r requirements.txt
+* **Requirements:** Python 3.9+
+
+* **Install dependencies:**
+    ```
+    pip install -r requirements.txt
+    ```
+* Configure environment variables (see `.env` template).
+* **Run the server:**
+    ```
+    python manage.py runserver
+    ```
+#### 2. 💻 Frontend
+
+* **Requirements:** Node.js 16+
+
+* **Commands:**
+    ```
+    cd frontend
+    npm install
+    npm run dev
+    ```
+#### 3. 🎤 Voice Support
+
+* Enable APIs in Google Cloud Console:
+    * ✅ Vertex AI Speech-to-Text
+    * ✅ Vertex AI Text-to-Speech
+* Create a service account & download credentials JSON.
+* **Export credentials path:**
+    ```
+    export GOOGLE_APPLICATION_CREDENTIALS="/path/to/credentials.json"
+    ```
+
+---
+### 📝 License
+
+MIT
+
+---
+### 🧠 Powered By
+
+* Google Vertex AI
+* Pinecone Vector DB
+* LangChain
+* React
+* Django
+* 
