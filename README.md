@@ -28,28 +28,77 @@ It crawls and indexes your website content, then uses advanced AI models to prov
 3. **Vector Database:** Indexed in **PineconeDB** for fast semantic search.  
 4. **RAG Pipeline:** Orchestrated with **LangChain**, combining retrieval with **Gemini LLMs** for contextual answers.  
 5. **Voice Features:**  
-   - **Speech-to-Text:** Real-time transcription with **Google Vertex AI Speech-to-Text**  
-   - **Text-to-Speech:** Human-like voice replies using **Google Vertex AI WaveNet**  
+   - **Speech-to-Text:** Real-time transcription with **Google Cloud Speech-to-Text**  
+   - **Text-to-Speech:** Human-like voice replies using **Google Cloud Text-to-Speech**  
 
 ---
 
 ## 🧰 Tech Stack  
 
 - **Frontend:** React, Vite, TailwindCSS  
-- **Backend:** Django, Django REST Framework  
+- **Backend:** Django, SQLite
 - **RAG Engine:** LangChain + Gemini Models  
 - **Vector DB:** PineconeDB  
 - **Scraping:** BeautifulSoup  
-- **Voice AI:** Google Vertex AI Speech-to-Text & Text-to-Speech  
+- **Voice AI:** Google Cloud Speech-to-Text & Text-to-Speech  
 
 ---
 
-## ⚙️ Setup  
 
-### 1. 🛠️ Backend  
+### ⚙️ Setup
 
-- **Requirements:** Python 3.9+  
-- Install dependencies:  
+#### 1. 🛠️ Backend
 
-  ```bash
-  pip install -r requirements.txt
+* **Requirements:** Python 3.9+
+
+* **Install dependencies:**
+    ```
+    cd backend
+    pip install -r requirements.txt
+    ```
+* Configure environment variables.
+* Run DB migrations
+    ```
+    python manage.py migrate
+    ```
+* **Run the server:**
+    ```
+    python manage.py runserver
+    ```
+#### 2. 💻 Frontend
+
+* **Requirements:** Node.js 16+
+
+* **Commands:**
+    ```
+    cd frontend
+    npm install
+    npm run dev
+    ```
+#### 3. 🎤 Google Cloud Support
+
+* Enable APIs in Google Cloud Console:
+    * ✅ Google Cloud Speech-to-Text
+    * ✅ Google Cloud Text-to-Speech
+* Create a service account & download credentials JSON.
+* **Export credentials path:**
+    ```
+    export GOOGLE_APPLICATION_CREDENTIALS="/path/to/credentials.json"
+    ```
+
+---
+### 📝 License
+
+MIT
+
+---
+### 🧠 Powered By
+
+* Google Vertex AI
+* Google Cloud Platform 
+* Pinecone Vector DB
+* LangChain
+* React
+* Django
+* SQLite
+  
