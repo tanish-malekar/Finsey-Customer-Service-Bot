@@ -2,6 +2,7 @@ import { useState, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Mic, MicOff, Loader2, Radio } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { apiUrl } from "@/lib/api";
 import {
   Tooltip,
   TooltipContent,
@@ -51,7 +52,7 @@ export const VoiceRecorder = ({ onSendMessage, onProcessingChange, disabled }: V
               const base64Audio = reader.result as string;
               
               // Send to speech-to-text API
-              const response = await fetch('http://localhost:8000/api/speech-to-text/', {
+              const response = await fetch(apiUrl('api/speech-to-text/'), {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',

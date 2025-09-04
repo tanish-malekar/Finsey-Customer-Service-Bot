@@ -1,6 +1,7 @@
 import { useState, useCallback } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { useVoice } from "./useVoice";
+import { apiUrl } from "@/lib/api";
 
 export interface Message {
   id: string;
@@ -45,7 +46,7 @@ export const useChat = (): UseChatReturn => {
     setIsLoading(true);
 
     try {
-      const response = await fetch("http://localhost:8000/api/ask/", {
+  const response = await fetch(apiUrl("api/ask/"), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -77,7 +78,7 @@ export const useChat = (): UseChatReturn => {
       if (wasVoiceQuestion) {
         // Use the TTS API instead of browser speech synthesis for better quality
         try {
-          const ttsResponse = await fetch('http://localhost:8000/api/text-to-speech/', {
+          const ttsResponse = await fetch(apiUrl('api/text-to-speech/'), {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

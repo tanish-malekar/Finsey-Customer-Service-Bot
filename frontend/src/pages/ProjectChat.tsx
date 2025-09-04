@@ -18,6 +18,7 @@ import {
   Zap
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { apiUrl } from "@/lib/api";
 
 export interface Message {
   id: string;
@@ -69,7 +70,7 @@ const ProjectChat = () => {
 
   const fetchProjectInfo = async () => {
     try {
-      const response = await fetch(`http://localhost:8000/api/projects/${projectId}/`);
+  const response = await fetch(apiUrl(`api/projects/${projectId}/`));
       if (response.ok) {
         const project = await response.json();
         setProjectInfo({
@@ -117,7 +118,7 @@ const ProjectChat = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch("http://localhost:8000/api/ask/", {
+  const response = await fetch(apiUrl("api/ask/"), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -150,7 +151,7 @@ const ProjectChat = () => {
       if (wasVoiceQuestion) {
         // Use the TTS API instead of browser speech synthesis for better quality
         try {
-          const ttsResponse = await fetch('http://localhost:8000/api/text-to-speech/', {
+          const ttsResponse = await fetch(apiUrl('api/text-to-speech/'), {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

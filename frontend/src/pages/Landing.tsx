@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
+import { apiUrl } from "@/lib/api";
 import { 
   Loader2, 
   Globe, 
@@ -50,7 +51,7 @@ const Landing = () => {
 
   const loadProjects = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/projects/");
+  const response = await fetch(apiUrl("api/projects/"));
       if (response.ok) {
         const data = await response.json();
         setProjects(data);
@@ -89,7 +90,7 @@ const Landing = () => {
     setIsCreating(true);
     
     try {
-      const response = await fetch("http://localhost:8000/api/projects/", {
+  const response = await fetch(apiUrl("api/projects/"), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -135,7 +136,7 @@ const Landing = () => {
   const pollProjectStatus = async (projectId: string) => {
     const interval = setInterval(async () => {
       try {
-        const response = await fetch(`http://localhost:8000/api/projects/${projectId}/`);
+  const response = await fetch(apiUrl(`api/projects/${projectId}/`));
         if (response.ok) {
           const project = await response.json();
           

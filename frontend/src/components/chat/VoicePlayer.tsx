@@ -2,6 +2,7 @@ import { useState, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Volume2, VolumeX, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { apiUrl } from "@/lib/api";
 
 interface VoicePlayerProps {
   text: string;
@@ -37,7 +38,7 @@ export const VoicePlayer = ({ text, disabled }: VoicePlayerProps) => {
     setIsLoading(true);
     
     try {
-      const response = await fetch('http://localhost:8000/api/text-to-speech/', {
+  const response = await fetch(apiUrl('api/text-to-speech/'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
