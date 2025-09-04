@@ -57,6 +57,10 @@ It crawls and indexes your website content, then uses advanced AI models to prov
     pip install -r requirements.txt
     ```
 * Configure environment variables.
+* Run DB migrations
+    ```
+    python manage.py migrate
+    ```
 * **Run the server:**
     ```
     python manage.py runserver
