@@ -1,113 +1,55 @@
-# 🎙️ Finsey Customer Service Bot
+# 🎙️ Ragify – Transform Any Website into an Intelligent AI Assistant  
 
-A Retrieval-Augmented Generation (RAG) chatbot and voice assistant system for the customer care service of **Bajaj Allianz General Insurance Company (BAGIC)**.
-
----
-
-## 📖 Overview
-
-This application leverages state-of-the-art AI, vector search, and voice processing to provide accurate, context-aware answers to customer queries.  
-It is designed to reduce the customer contact footprint by moving interactions to **automated chat and voice bots**.
+Instantly create conversational AI chatbots from your website content.  
+No coding required. Just paste a URL and start chatting.  
 
 ---
 
-## 🧠 How it Works
+## 📖 Overview  
 
-- **Data Collection:** Website data is scraped from the BAGIC website using `BeautifulSoup`.
-- **Embedding:** The scraped data is embedded using Google's `gemini-embedding-001` model via **Vertex AI**.
-- **Vector Database:** Embeddings and metadata are stored in **PineconeDB** for fast semantic search.
-- **RAG Agent:** **LangChain** orchestrates retrieval and answer generation, using **Gemini LLMs** for final response synthesis.
-- **Backend:** **Django** is used to create REST APIs that power both the chat and voice interfaces.
-- **Frontend:** Built with **React**, **Vite**, and **TailwindCSS** for a modern, responsive UI.
-- **Voice Support:**
-  - Real-time **speech-to-text** via **Google Vertex AI Speech-to-Text**
-  - Human-like audio responses using **Google Vertex AI Text-to-Speech (WaveNet voices)**
+**Ragify** turns any website into an AI-powered assistant by combining **Retrieval-Augmented Generation (RAG)** with real-time voice interaction.  
+It crawls and indexes your website content, then uses advanced AI models to provide accurate, context-aware responses in both **chat** and **voice** formats.  
 
 ---
 
-## ✨ Features
+## ✨ Key Highlights  
 
-- Chatbot interface (text and voice-enabled)
-- RAG pipeline for accurate, context-aware answers
-- Fast semantic search with **PineconeDB**
-- Real-time voice support via **Vertex AI Speech-to-Text** and **Text-to-Speech**
-- Scalable, production-ready backend and frontend
-
----
-
-## 🧰 Tech Stack
-
-- **Frontend:** React, Vite, TailwindCSS
-- **Backend:** Django, Django REST Framework
-- **RAG Orchestration:** LangChain
-- **Embeddings:** Gemini (`gemini-embedding-001` via Vertex AI)
-- **Vector DB:** PineconeDB
-- **Scraping:** BeautifulSoup
-- **Voice Integration:**
-  - Google Vertex AI Speech-to-Text
-  - Google Vertex AI Text-to-Speech (WaveNet)
+- 🚀 **Instant Setup:** Enter a website URL, and Ragify automatically builds a chatbot trained on its content.  
+- 🔒 **Secure & Private:** Your data is handled safely with industry-grade security.  
+- 🤖 **AI-Powered:** Powered by Google’s **Gemini models**, with RAG for precise, reliable answers.  
+- 🎤 **Voice Interaction:** Talk to your assistant with real-time speech-to-text and natural text-to-speech voices.  
 
 ---
 
-## ⚙️ Setup
+## 🧠 How it Works  
 
-### 1. 🛠️ Backend
-
-- **Requirements:** Python 3.9+
-- Install dependencies:
-
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-- Set environment variables (see `.env` template)
-- Run server:
-
-    ```bash
-    python manage.py runserver
-    ```
+1. **Website Crawling:** Content is scraped using `BeautifulSoup`.  
+2. **Embedding:** The content is embedded with **Gemini (`gemini-embedding-001`)** via Vertex AI.  
+3. **Vector Database:** Indexed in **PineconeDB** for fast semantic search.  
+4. **RAG Pipeline:** Orchestrated with **LangChain**, combining retrieval with **Gemini LLMs** for contextual answers.  
+5. **Voice Features:**  
+   - **Speech-to-Text:** Real-time transcription with **Google Vertex AI Speech-to-Text**  
+   - **Text-to-Speech:** Human-like voice replies using **Google Vertex AI WaveNet**  
 
 ---
 
-### 2. 💻 Frontend
+## 🧰 Tech Stack  
 
-- **Requirements:** Node.js 16+
-- Commands:
-
-    ```bash
-    cd frontend
-    npm install
-    npm run dev
-    ```
+- **Frontend:** React, Vite, TailwindCSS  
+- **Backend:** Django, Django REST Framework  
+- **RAG Engine:** LangChain + Gemini Models  
+- **Vector DB:** PineconeDB  
+- **Scraping:** BeautifulSoup  
+- **Voice AI:** Google Vertex AI Speech-to-Text & Text-to-Speech  
 
 ---
 
-### 3. 🎤 Voice Support with Vertex AI
+## ⚙️ Setup  
 
-- Enable the following in **Google Cloud Console**:
-  - ✅ Vertex AI Speech-to-Text
-  - ✅ Vertex AI Text-to-Speech
-- Create a service account and download the credentials JSON
-- Set the authentication environment variable:
+### 1. 🛠️ Backend  
 
-    ```bash
-    export GOOGLE_APPLICATION_CREDENTIALS="/path/to/credentials.json"
-    ```
+- **Requirements:** Python 3.9+  
+- Install dependencies:  
 
----
-
-## 📝 License
-
-**MIT**
-
----
-
-## 🧠 Powered By
-
-- [Google Vertex AI](https://cloud.google.com/vertex-ai)
-- [Vertex AI Speech-to-Text](https://cloud.google.com/vertex-ai/docs/speech)
-- [Vertex AI Text-to-Speech](https://cloud.google.com/vertex-ai/docs/text-to-speech)
-- [Pinecone Vector DB](https://www.pinecone.io/)
-- [LangChain](https://www.langchain.com/)
-- [React](https://reactjs.org/)
-- [Django](https://www.djangoproject.com/)
+  ```bash
+  pip install -r requirements.txt
